@@ -7,7 +7,15 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+    .ui-autocomplete-category {
+        font-weight: bold;
+        padding: .2em .4em;
+        margin: .8em 0 .2em;
+        line-height: 1.5;
+    }
+    </style>
     <title>Chokdee</title>
   </head>
   <body>
@@ -15,7 +23,7 @@
     <div class="container">
         <div class="row">
             <div class="col-1">รุ่น</div>
-            <div class="col-7"><input class="form-control" type="text"></div>
+            <div class="col-7"><input class="form-control" id="search"></div>
         </div>
         <br />
         <div class="row">
@@ -134,8 +142,52 @@
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+        $( function() {
+        $.widget( "custom.catcomplete", $.ui.autocomplete, {
+            _create: function() {
+            this._super();
+            this.widget().menu( "option", "items", "> :not(.ui-autocomplete-category)" );
+            },
+            _renderMenu: function( ul, items ) {
+            var that = this,
+                currentCategory = "";
+            $.each( items, function( index, item ) {
+                var li;
+                if ( item.category != currentCategory ) {
+                ul.append( "<li class='ui-autocomplete-category'>" + item.category + "</li>" );
+                currentCategory = item.category;
+                }
+                li = that._renderItemData( ul, item );
+                if ( item.category ) {
+                li.attr( "aria-label", item.category + " : " + item.label );
+                }
+            });
+            }
+        });
+        var data = [
+            { label: "anders", category: "" },
+            { label: "andreas", category: "" },
+            { label: "antal", category: "" },
+            { label: "Wave 110i", category: "2018" },
+            { label: "Wave 125i", category: "2018" },
+            { label: "Wave 110i", category: "2019" },
+            { label: "Wave 125i", category: "2019" },
+            { label: "annttop C13", category: "Products" },
+            { label: "anders andersson", category: "People" },
+            { label: "andreas andersson", category: "People" },
+            { label: "andreas johnson", category: "People" }
+        ];
+
+        $( "#search" ).catcomplete({
+            delay: 0,
+            source: data
+        });
+        } );
+    </script>
   </body>
 </html>
