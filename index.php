@@ -1,3 +1,11 @@
+<?php
+    $fromserver = '{ label: "Odd", category: "" },
+    { label: "Orn", category: "" },
+    { label: "Wave 110i", category: "HONDA" },
+    { label: "Wave 125i", category: "HONDA" },
+    { label: "R15", category: "YAMAHA" },
+    { label: "R3", category: "YAMAHA" }';
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -29,18 +37,18 @@
         <div class="row">
             <div class="col-1">MODEL</div>
             <div class="col">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary active">
-                        <input type="radio" name="options" id="option1" autocomplete="off" checked>ดรัมเบรค
+                <div style="display:none" class="btn-group btn-group-toggle model-group" id="model1234" data-toggle="buttons">
+                    <label class="btn btn-secondary model model1 active">
+                        <input type="radio" name="options" id="model1" autocomplete="off" value="1" checked>ดรัมเบรค
                     </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="options" id="option2" autocomplete="off">ดิสก์เบรค
+                    <label class="btn btn-secondary model model2">
+                        <input type="radio" name="options" id="model2" autocomplete="off" value="2">ดิสก์เบรค
                     </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="options" id="option2" autocomplete="off">เกียร์มือ
+                    <label class="btn btn-secondary model model3">
+                        <input type="radio" name="options" id="model3" autocomplete="off" value="3">เกียร์มือ
                     </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="options" id="option2" autocomplete="off">ล้อแม็ก
+                    <label class="btn btn-secondary model model4">
+                        <input type="radio" name="options" id="model4" autocomplete="off" value="4">ล้อแม็ก
                     </label>
                 </div>
             </div>
@@ -52,7 +60,7 @@
             <div class="col-1">บาท</div>
             <div class="col-2">+ทะเบียน,พรบ.,ประกัน</div>
             <div class="col-2">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <div class="btn-group btn-group-toggle" style="width:100%" data-toggle="buttons">
                     <label class="btn btn-secondary active">
                         <input type="radio" name="options" id="option1" autocomplete="off" checked>1
                     </label>
@@ -65,20 +73,24 @@
         </div>
         <div class="row">
             <div class="col-5"></div>
-            <div class="col-1"><button type="button" class="btn btn-outline-success">1,500</button></div>
-            <div class="col-1"><button type="button" class="btn btn-outline-secondary">2,500</button></div>
+            <div class="col-2">
+                <ul class="list-group list-group-horizontal">
+                    <li class="list-group-item active" style="width:100%">1,500</li>
+                    <li class="list-group-item disabled" style="width:100%">2,500</li>
+                </ul>
+            </div>
             <div class="col-1">บาท</div>
         </div>
         <br />
         <div class="row">
             <div class="col-1">LEASING</div>
-            <div class="col-2">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="col-5">
+                <div class="btn-group btn-group-toggle" style="width:100%" data-toggle="buttons">
                     <label class="btn btn-secondary active">
                         <input type="radio" name="options" id="option1" autocomplete="off" checked>GE
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="radio" name="options" id="option2" autocomplete="off">TL
+                        <input type="radio" name="options" id="option2" autocomplete="off">T-Leasing
                     </label>
                 </div>
             </div>
@@ -87,7 +99,7 @@
         <div class="row">
             <div class="col-1">DOWN</div>
             <div class="col-5">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <div class="btn-group btn-group-toggle" style="width:100%" data-toggle="buttons">
                     <label class="btn btn-secondary active">
                         <input type="radio" name="options" id="option1" autocomplete="off" checked>FREE
                     </label>
@@ -110,7 +122,7 @@
         <div class="row">
             <div class="col-1">PERIOD</div>
             <div class="col-5">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <div class="btn-group btn-group-toggle" style="width:100%" data-toggle="buttons">
                     <label class="btn btn-secondary active">
                         <input type="radio" name="options" id="option1" autocomplete="off">1
                     </label>
@@ -132,13 +144,18 @@
         </div>
         <div class="row">
             <div class="col-1">ผ่อน</div>
-            <div class="col-1"><button type="button" class="btn btn-outline-secondary">3,000</button></div>
-            <div class="col-1"><button type="button" class="btn btn-outline-secondary">2,500</button></div>
-            <div class="col-1"><button type="button" class="btn btn-outline-secondary">2,000</button></div>
-            <div class="col-1"><button type="button" class="btn btn-outline-secondary">1,500</button></div>
-            <div class="col-1"><button type="button" class="btn btn-outline-success">1,000</button></div>
+            <div class="col-5">
+                <ul class="list-group list-group-horizontal">
+                    <li class="list-group-item" style="width:100%">3,000</li>
+                    <li class="list-group-item" style="width:100%">2,500</li>
+                    <li class="list-group-item" style="width:100%">2,000</li>
+                    <li class="list-group-item" style="width:100%">1,500</li>
+                    <li class="list-group-item active" style="width:100%">1,000</li>
+                </ul>
+            </div>
             <div class="col">บาท/เดือน</div>
         </div>
+        <hr>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -170,23 +187,32 @@
             }
         });
         var data = [
-            { label: "anders", category: "" },
-            { label: "andreas", category: "" },
-            { label: "antal", category: "" },
-            { label: "Wave 110i", category: "2018" },
-            { label: "Wave 125i", category: "2018" },
-            { label: "Wave 110i", category: "2019" },
-            { label: "Wave 125i", category: "2019" },
-            { label: "annttop C13", category: "Products" },
-            { label: "anders andersson", category: "People" },
-            { label: "andreas andersson", category: "People" },
-            { label: "andreas johnson", category: "People" }
+            <?php echo $fromserver; ?>
         ];
 
         $( "#search" ).catcomplete({
             delay: 0,
             source: data
         });
+
+        $("#search").change(function() {
+            $(".model-group").hide();
+            $(".model").removeClass("active");
+            var typename = $(this).val();
+            if(typename == 'Wave 110i') {
+                $("#model1234").show();
+                $(".model1").addClass("active");
+                $(".model1").find("input").prop("checked", true);
+            } else if(typename == 'Wave 125i') {
+                $("#model1234").show();
+                $(".model2").addClass("active");   
+                $(".model2").find("input").prop("checked", true);                 
+            } else if(typename == 'R15') {  
+                $(".model3").addClass("active");
+                $(".model3").find("input").prop("checked", true);
+            }
+        });
+
         } );
     </script>
   </body>
