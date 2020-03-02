@@ -1,11 +1,11 @@
 <?php
     $mkt_name = '
-    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดรัมเบรก)", category: "HONDA", modelId: "AFS110KDFL 2TH" },
-    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110KSEL TH" },
-    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทมือ ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110MSFL TH" },
-    { label: "Wave110I (เวฟ 110ไอ ล้อแม๊ก สตาร์ทมือ ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110MCFL TH" },
-    { label: "YZF-R15", category: "YAMAHA", modelId: "(รอเลือกสี)" },
-    { label: "YZF-R3", category: "YAMAHA", modelId: "B5L600" }';
+    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดรัมเบรก)", category: "HONDA", modelId: "AFS110KDFL 2TH", cash: 37500, gePrice: 49500 },
+    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110KSEL TH", cash: 41000, gePrice: 49900 },
+    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทมือ ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110MSFL TH", cash: 41000, gePrice: 51900 },
+    { label: "Wave110I (เวฟ 110ไอ ล้อแม๊ก สตาร์ทมือ ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110MCFL TH", cash: 41000, gePrice: 54400 },
+    { label: "YZF-R15", category: "YAMAHA", modelId: "(รอเลือกสี)", cash: 97000, gePrice: 107000 },
+    { label: "YZF-R3", category: "YAMAHA", modelId: "B5L600", cash: 97500, gePrice: 107500 }';
 ?>
 <!doctype html>
 <html lang="en">
@@ -57,12 +57,12 @@
         </div>
         <div class="row align-items-center">
             <div class="col-1">รหัสรุ่น</div>
-            <div class="col" id="model_id"></div>
+            <div class="col" id="model-id"></div>
         </div>
         <br />
         <div class="row align-items-center">
             <div class="col-1">ราคา</div>
-            <div class="col-1"><button type="button" class="btn btn-success" id="cash_price">97,000</button></div>
+            <div class="col-1"><button type="button" class="btn btn-success" id="cash-price">97,000</button></div>
             <div class="col-1">บาท</div>
             <div class="col-2">+ทะเบียน,พรบ.,ประกัน</div>
             <div class="col-2">
@@ -200,35 +200,37 @@
             var installment = ((loan * int / 100 * period) + loan) / period;
             return ceil(leasing, installment);
         }
+        function updatePrice() {
+            var cash_price = Number($("#cash-price").text().replace(/,/g, ''));
+            var leasing = $("input[name='leasing']:checked").val().toUpperCase();
+            var down = $("input[name='down']:checked").val();
+            var period = $("input[name='period']:checked").val();
+            //alert('Leasing: ' + leasing + '\nPrice: ' + cash_price);
+            var interest = 1.99;
+            if (leasing == 'GE') {
+                interest = 1.95;
+            } else if (leasing == 'TL') {
+                interest = 1.99;
+            } else {
+                alert("Leasing Name Error: " + leasing);
+            }
+            $("#down1").text("ฟรี");
+            $("#down2").text(numberWithCommas(cash_price * 0.05));
+            $("#down3").text(numberWithCommas(cash_price * 0.10));
+            $("#down4").text(numberWithCommas(cash_price * 0.15));
+            $("#down5").text(numberWithCommas(cash_price * 0.20));
+            $("#install1").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 12)));
+            $("#install2").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 18)));
+            $("#install3").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 24)));
+            $("#install4").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 30)));
+            $("#install5").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 36)));
+        }
         $( function() {
             //$("input[name='leasing']").click(function(){
             $("input[type='radio']").click(function(){
-                var cash_price = Number($("#cash_price").text().replace(/,/g, ''));
-                var leasing = $("input[name='leasing']:checked").val().toUpperCase();
-                var down = $("input[name='down']:checked").val();
-                var period = $("input[name='period']:checked").val();
-                //alert('Leasing: ' + leasing + '\nPrice: ' + cash_price);
-                var interest = 1.99;
-                if (leasing == 'GE') {
-                    interest = 1.95;
-                } else if (leasing == 'TL') {
-                    interest = 1.99;
-                } else {
-                    alert("Leasing Name Error: " + leasing);
-                }
-                $("#down1").text("ฟรี");
-                $("#down2").text(numberWithCommas(cash_price * 0.05));
-                $("#down3").text(numberWithCommas(cash_price * 0.10));
-                $("#down4").text(numberWithCommas(cash_price * 0.15));
-                $("#down5").text(numberWithCommas(cash_price * 0.20));
-                $("#install1").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 12)));
-                $("#install2").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 18)));
-                $("#install3").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 24)));
-                $("#install4").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 30)));
-                $("#install5").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 36)));
+                updatePrice();
             });
 
-            //var modelId = "";
             $.widget( "custom.catcomplete", $.ui.autocomplete, {
                 _create: function() {
                     this._super();
@@ -247,8 +249,6 @@
                         if ( item.category ) {
                             li.attr( "aria-label", item.category + " : " + item.label );
                         }
-                        //var modelId = item.modelId;
-                        $("#model_id").text(item.modelId);
                     });
                 }
             });
@@ -262,10 +262,22 @@
                 source: data
             });
 
+            function searchValueInArray(nameKey, myArray){
+                for (var i=0; i < myArray.length; i++) {
+                    if (myArray[i].label === nameKey) {
+                        return myArray[i];
+                    }
+                }
+            }
+
             $("#search").change(function() {
                 $(".model-group").hide();
                 $(".model").removeClass("active");
                 var typename = $(this).val();
+                var object = searchValueInArray(typename, data);
+                $("#model-id").text(object.modelId);
+                $("#cash-price").text(numberWithCommas(object.cash));
+                updatePrice();
                 if(typename == 'Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดรัมเบรก)') {
                     $("#model1234").show();
                     $(".model1").addClass("active");
