@@ -31,12 +31,12 @@
     <h1>Testing System</h1>
     <form class="opening">
     <div class="container">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-1">รุ่น</div>
             <div class="col-7"><input class="form-control" id="search"></div>
         </div>
         <br />
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-1">MODEL</div>
             <div class="col">
                 <div style="display:none" class="btn-group btn-group-toggle model-group" id="model1234" data-toggle="buttons">
@@ -55,12 +55,12 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-1">รหัสรุ่น</div>
             <div class="col" id="model_id"></div>
         </div>
         <br />
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-1">ราคา</div>
             <div class="col-1"><button type="button" class="btn btn-success" id="cash_price">97,000</button></div>
             <div class="col-1">บาท</div>
@@ -77,7 +77,7 @@
             </div>
             <div class="col-1">ปี</div>
         </div>
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-5"></div>
             <div class="col-2">
                 <ul class="list-group list-group-horizontal">
@@ -88,7 +88,7 @@
             <div class="col-1">บาท</div>
         </div>
         <br />
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-1">LEASING</div>
             <div class="col-5">
                 <div class="btn-group btn-group-toggle" style="width:100%" data-toggle="buttons">
@@ -102,29 +102,29 @@
             </div>
         </div>
         <br />
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-1">DOWN</div>
             <div class="col-5">
                 <div class="btn-group btn-group-toggle" style="width:100%" data-toggle="buttons">
                     <label class="btn btn-secondary active">
-                        <input type="radio" name="down" value="0%" autocomplete="off" checked>FREE
+                        <input type="radio" name="down" value="0" autocomplete="off" checked>FREE
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="radio" name="down" value="5%" autocomplete="off">5%
+                        <input type="radio" name="down" value="5" autocomplete="off">5%
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="radio" name="down" value="10%" autocomplete="off">10%
+                        <input type="radio" name="down" value="10" autocomplete="off">10%
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="radio" name="down" value="15%" autocomplete="off">15%
+                        <input type="radio" name="down" value="15" autocomplete="off">15%
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="radio" name="down" value="20%" autocomplete="off">20%
+                        <input type="radio" name="down" value="20" autocomplete="off">20%
                     </label>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-1"></div>
             <div class="col-5">
                 <ul class="list-group list-group-horizontal">
@@ -138,7 +138,7 @@
             <div class="col">บาท/เดือน</div>
         </div>
         <br />
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-1">PERIOD</div>
             <div class="col-5">
                 <div class="btn-group btn-group-toggle" style="width:100%" data-toggle="buttons">
@@ -161,7 +161,7 @@
             </div>
             <div class="col-1">ปี</div>
         </div>
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-1">ผ่อน</div>
             <div class="col-5">
                 <ul class="list-group list-group-horizontal">
@@ -184,17 +184,48 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script>
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        function ceil(leasing, amount) {
+            if (leasing == 'GE') {
+                return Math.ceil(amount);
+            } else if (leasing == 'TL') {
+                return Math.ceil(amount / 5) * 5;
+            }
+            return amount;
+        }
+        function calculate(price, leasing, down, int, period) {
+            var loan = price - (price * down / 100);
+            var installment = ((loan * int / 100 * period) + loan) / period;
+            return ceil(leasing, installment);
+        }
         $( function() {
             //$("input[name='leasing']").click(function(){
             $("input[type='radio']").click(function(){
-                var cash_price = $("#cash_price").text();
-                var leasing = $("input[name='leasing']:checked").val();
+                var cash_price = Number($("#cash_price").text().replace(/,/g, ''));
+                var leasing = $("input[name='leasing']:checked").val().toUpperCase();
                 var down = $("input[name='down']:checked").val();
                 var period = $("input[name='period']:checked").val();
                 //alert('Leasing: ' + leasing + '\nPrice: ' + cash_price);
-                alert(cash_price * 5 / 100);
-                //$("#down1").text(cash_price * 0%);
-                //$("#down2").text(cash_price * 5%);
+                var interest = 1.99;
+                if (leasing == 'GE') {
+                    interest = 1.95;
+                } else if (leasing == 'TL') {
+                    interest = 1.99;
+                } else {
+                    alert("Leasing Name Error: " + leasing);
+                }
+                $("#down1").text("ฟรี");
+                $("#down2").text(numberWithCommas(cash_price * 0.05));
+                $("#down3").text(numberWithCommas(cash_price * 0.10));
+                $("#down4").text(numberWithCommas(cash_price * 0.15));
+                $("#down5").text(numberWithCommas(cash_price * 0.20));
+                $("#install1").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 12)));
+                $("#install2").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 18)));
+                $("#install3").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 24)));
+                $("#install4").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 30)));
+                $("#install5").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 36)));
             });
 
             //var modelId = "";
