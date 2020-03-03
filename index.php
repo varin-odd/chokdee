@@ -1,11 +1,11 @@
 <?php
     $mkt_name = '
-    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดรัมเบรก)", category: "HONDA", modelId: "AFS110KDFL 2TH", cash: 37500, gePrice: 49500 },
-    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110KSEL TH", cash: 41000, gePrice: 49900 },
-    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทมือ ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110MSFL TH", cash: 41000, gePrice: 51900 },
-    { label: "Wave110I (เวฟ 110ไอ ล้อแม๊ก สตาร์ทมือ ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110MCFL TH", cash: 41000, gePrice: 54400 },
-    { label: "YZF-R15", category: "YAMAHA", modelId: "(รอเลือกสี)", cash: 97000, gePrice: 107000 },
-    { label: "YZF-R3", category: "YAMAHA", modelId: "B5L600", cash: 97500, gePrice: 107500 }';
+    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดรัมเบรก)", category: "HONDA", modelId: "AFS110KDFL 2TH", cash: 37500, cost: 35700, gePrice: 49500 },
+    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110KSEL TH", cash: 41000, cost: 39300, gePrice: 49900 },
+    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทมือ ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110MSFL TH", cash: 41000, cost: 42000, gePrice: 51900 },
+    { label: "Wave110I (เวฟ 110ไอ ล้อแม๊ก สตาร์ทมือ ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110MCFL TH", cash: 41000, cost: 43900, gePrice: 54400 },
+    { label: "YZF-R15", category: "YAMAHA", modelId: "(รอเลือกสี)", cash: 97000, cost: 93500, gePrice: 107000 },
+    { label: "YZF-R3", category: "YAMAHA", modelId: "B5L600", cash: 97500, cost: 182500, gePrice: 107500 }';
 ?>
 <!doctype html>
 <html lang="en">
@@ -17,6 +17,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
     .ui-autocomplete-category {
         font-weight: bold;
@@ -33,7 +34,15 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-1">รุ่น</div>
-            <div class="col-7"><input class="form-control" id="search"></div>
+            <div class="col-5"><input class="form-control" id="search"></div>
+            <div class="col-2">
+                <button type="button" class="btn btn-primary btn-sm">
+                    <i class="material-icons">search</i>
+                </button>
+                <button type="button" class="btn btn-primary btn-sm" id="clear">
+                    <i class="material-icons">delete</i>
+                </button>
+            </div>
         </div>
         <br />
         <div class="row align-items-center">
@@ -41,138 +50,140 @@
             <div class="col">
                 <div style="display:none" class="btn-group btn-group-toggle model-group" id="model1234" data-toggle="buttons">
                     <label class="btn btn-secondary model model1 active">
-                        <input type="radio" name="model" id="model1" autocomplete="off" value="1" checked>ดรัมเบรค
+                        <input type="radio" name="model" id="model1" value="1" checked>ดรัมเบรค
                     </label>
                     <label class="btn btn-secondary model model2">
-                        <input type="radio" name="model" id="model2" autocomplete="off" value="2">ดิสก์เบรค
+                        <input type="radio" name="model" id="model2" value="2">ดิสก์เบรค
                     </label>
                     <label class="btn btn-secondary model model3">
-                        <input type="radio" name="model" id="model3" autocomplete="off" value="3">เกียร์มือ
+                        <input type="radio" name="model" id="model3" value="3">เกียร์มือ
                     </label>
                     <label class="btn btn-secondary model model4">
-                        <input type="radio" name="model" id="model4" autocomplete="off" value="4">ล้อแม็ก
+                        <input type="radio" name="model" id="model4" value="4">ล้อแม็ก
                     </label>
                 </div>
             </div>
         </div>
         <div class="row align-items-center">
             <div class="col-1">รหัสรุ่น</div>
-            <div class="col" id="model-id"></div>
+            <div class="col-2" id="model-id"></div>
+            <div class="col-1"><span class="badge badge-pill badge-info" id="cc">110 CC</span></div>
         </div>
         <br />
         <div class="row align-items-center">
             <div class="col-1">ราคา</div>
-            <div class="col-1"><button type="button" class="btn btn-success" id="cash-price">97,000</button></div>
-            <div class="col-1">บาท</div>
+            <div class="col-2">
+                <button type="button" class="btn btn-success btn-sm btn-block" id="cash-price">97,000
+                    <span class="badge badge-pill badge-danger" id="cost-price">8.5</span>
+                </button>
+            </div>
             <div class="col-2">+ทะเบียน,พรบ.,ประกัน</div>
-            <div class="col-2">
-                <div class="btn-group btn-group-toggle" style="width:100%" data-toggle="buttons">
-                    <label class="btn btn-secondary active">
-                        <input type="radio" name="additional" id="additional1" autocomplete="off" checked>1
+            <div class="col-3">
+                <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
+                    <label class="btn btn-outline-primary btn-sm active">
+                        <input type="radio" name="additional" id="additional1" checked>1,500
+                        <span class="badge badge-pill badge-light">1 ปี</span>
                     </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="additional" id="additional2" autocomplete="off">2
-                    </label>
-                </div>
-            </div>
-            <div class="col-1">ปี</div>
-        </div>
-        <div class="row align-items-center">
-            <div class="col-5"></div>
-            <div class="col-2">
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item active" style="width:100%">1,500</li>
-                    <li class="list-group-item disabled" style="width:100%">2,500</li>
-                </ul>
-            </div>
-            <div class="col-1">บาท</div>
-        </div>
-        <br />
-        <div class="row align-items-center">
-            <div class="col-1">LEASING</div>
-            <div class="col-5">
-                <div class="btn-group btn-group-toggle" style="width:100%" data-toggle="buttons">
-                    <label class="btn btn-secondary active">
-                        <input type="radio" name="leasing" value="GE" autocomplete="off" checked>GE
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="leasing" value="TL" autocomplete="off">T-Leasing
+                    <label class="btn btn-outline-primary btn-sm">
+                        <input type="radio" name="additional" id="additional2">2,500
+                        <span class="badge badge-pill badge-light">2 ปี</span>
                     </label>
                 </div>
             </div>
         </div>
         <br />
         <div class="row align-items-center">
-            <div class="col-1">DOWN</div>
+            <div class="col-1">ไฟแนนซ์</div>
             <div class="col-5">
-                <div class="btn-group btn-group-toggle" style="width:100%" data-toggle="buttons">
-                    <label class="btn btn-secondary active">
-                        <input type="radio" name="down" value="0" autocomplete="off" checked>FREE
+                <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
+                    <label class="btn btn-outline-primary active">
+                        <input type="radio" name="leasing" value="GE" checked>กรุงศรี
                     </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="down" value="5" autocomplete="off">5%
+                    <label class="btn btn-outline-primary">
+                        <input type="radio" name="leasing" value="TL">ทีลิสซิ่ง
                     </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="down" value="10" autocomplete="off">10%
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="down" value="15" autocomplete="off">15%
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="down" value="20" autocomplete="off">20%
+                    <label class="btn btn-outline-primary">
+                        <input type="radio" name="leasing" value="OFF">-
                     </label>
                 </div>
             </div>
-        </div>
-        <div class="row align-items-center">
-            <div class="col-1"></div>
-            <div class="col-5">
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item active" style="width:100%" id="down1">FREE</li>
-                    <li class="list-group-item" style="width:100%" id="down2">5%</li>
-                    <li class="list-group-item" style="width:100%" id="down3">10%</li>
-                    <li class="list-group-item" style="width:100%" id="down4">15%</li>
-                    <li class="list-group-item" style="width:100%" id="down5">20%</li>
-                </ul>
-            </div>
-            <div class="col">บาท/เดือน</div>
+            <div class="col-1"><p class="h6" style="color:white" id="loan-price">ยอดจัด</p></div>
         </div>
         <br />
         <div class="row align-items-center">
-            <div class="col-1">PERIOD</div>
+            <div class="col-1">ดาวน์</div>
             <div class="col-5">
-                <div class="btn-group btn-group-toggle" style="width:100%" data-toggle="buttons">
-                    <label class="btn btn-secondary active">
-                        <input type="radio" name="period" value="12" autocomplete="off">1
+                <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
+                    <label class="btn btn-outline-primary btn-sm active">
+                        <input type="radio" name="down" value="0" checked>
+                        <span class="badge badge-pill badge-light">ฟรี</span>
+                        <br>
+                        <span id="down1"></span>
                     </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="period" value="18" autocomplete="off">1.5
+                    <label class="btn btn-outline-primary btn-sm">
+                        <input type="radio" name="down" value="5">
+                        <span class="badge badge-pill badge-light">5%</span>
+                        <br>
+                        <span id="down2"></span>
                     </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="period" value="24" autocomplete="off">2
+                    <label class="btn btn-outline-primary btn-sm">
+                        <input type="radio" name="down" value="10">
+                        <span class="badge badge-pill badge-light">10%</span>
+                        <br>
+                        <span id="down3"></span>
                     </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="period" value="30" autocomplete="off">2.5
+                    <label class="btn btn-outline-primary btn-sm">
+                        <input type="radio" name="down" value="15">
+                        <span class="badge badge-pill badge-light">15%</span>
+                        <br>
+                        <span id="down4"></span>
                     </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="period" value="36" autocomplete="off" checked>3
+                    <label class="btn btn-outline-primary btn-sm">
+                        <input type="radio" name="down" value="20">
+                        <span class="badge badge-pill badge-light">20%</span>
+                        <br>
+                        <span id="down5"></span>
                     </label>
                 </div>
             </div>
-            <div class="col-1">ปี</div>
         </div>
+        <br />
         <div class="row align-items-center">
             <div class="col-1">ผ่อน</div>
             <div class="col-5">
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item" style="width:100%" id="install1">3,000</li>
-                    <li class="list-group-item" style="width:100%" id="install2">2,500</li>
-                    <li class="list-group-item" style="width:100%" id="install3">2,000</li>
-                    <li class="list-group-item" style="width:100%" id="install4">1,500</li>
-                    <li class="list-group-item active" style="width:100%" id="install5">1,000</li>
-                </ul>
+                <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
+                    <label class="btn btn-outline-primary btn-sm active">
+                        <input type="radio" name="period" value="0" checked>
+                        <span class="badge badge-pill badge-light">1 ปี</span>
+                        <br>
+                        <span id="install1"></span>
+                    </label>
+                    <label class="btn btn-outline-primary btn-sm">
+                        <input type="radio" name="period" value="5">
+                        <span class="badge badge-pill badge-light">1.5 ปี</span>
+                        <br>
+                        <span id="install2"></span>
+                    </label>
+                    <label class="btn btn-outline-primary btn-sm">
+                        <input type="radio" name="period" value="10">
+                        <span class="badge badge-pill badge-light">2 ปี</span>
+                        <br>
+                        <span id="install3"></span>
+                    </label>
+                    <label class="btn btn-outline-primary btn-sm">
+                        <input type="radio" name="period" value="15">
+                        <span class="badge badge-pill badge-light">2.5 ปี</span>
+                        <br>
+                        <span id="install4"></span>
+                    </label>
+                    <label class="btn btn-outline-primary btn-sm">
+                        <input type="radio" name="period" value="20">
+                        <span class="badge badge-pill badge-light">3 ปี</span>
+                        <br>
+                        <span id="install5"></span>
+                    </label>
+                </div>
             </div>
-            <div class="col">บาท/เดือน</div>
         </div>
         <hr>
     </div>
@@ -204,7 +215,6 @@
             var cash_price = Number($("#cash-price").text().replace(/,/g, ''));
             var leasing = $("input[name='leasing']:checked").val().toUpperCase();
             var down = $("input[name='down']:checked").val();
-            var period = $("input[name='period']:checked").val();
             //alert('Leasing: ' + leasing + '\nPrice: ' + cash_price);
             var interest = 1.99;
             if (leasing == 'GE') {
@@ -277,6 +287,7 @@
                 var object = searchValueInArray(typename, data);
                 $("#model-id").text(object.modelId);
                 $("#cash-price").text(numberWithCommas(object.cash));
+                $("#cost-price").text((object.cash - object.cost) / 1000);
                 updatePrice();
                 if(typename == 'Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดรัมเบรก)') {
                     $("#model1234").show();
@@ -290,6 +301,10 @@
                     $(".model3").addClass("active");
                     $(".model3").find("input").prop("checked", true);
                 }
+            });
+
+            $("#clear").click(function() {
+                $("#search").text();
             });
         } );
     </script>
