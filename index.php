@@ -19,32 +19,42 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-    .ui-autocomplete-category {
-        font-weight: bold;
-        padding: .2em .4em;
-        margin: .8em 0 .2em;
-        line-height: 1.5;
-    }
+        .ui-autocomplete-category {
+            font-weight: bold;
+            padding: .2em .4em;
+            margin: .8em 0 .2em;
+            line-height: 1.5;
+        }
+        i {
+            vertical-align: sub;
+        }
     </style>
     <title>Chokdee</title>
   </head>
   <body>
-    <h1>Testing System</h1>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">
+            <i class="material-icons">motorcycle</i>
+            Testing System
+            <i class="material-icons">sports_motorsports</i>
+        </a>
+    </nav>
+    <br>
     <form class="opening">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-1">รุ่น</div>
-            <div class="col-5"><input class="form-control" id="search"></div>
+            <div class="col-5"><input class="form-control" id="search" placeholder="ค้นหา"></div>
             <div class="col-2">
-                <button type="button" class="btn btn-primary btn-sm">
+                <button type="button" class="btn btn-outline-primary btn-sm">
                     <i class="material-icons">search</i>
                 </button>
-                <button type="button" class="btn btn-primary btn-sm" id="clear">
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="clear">
                     <i class="material-icons">delete</i>
                 </button>
             </div>
         </div>
-        <br />
+        <br>
         <div class="row align-items-center">
             <div class="col-1">MODEL</div>
             <div class="col">
@@ -66,10 +76,18 @@
         </div>
         <div class="row align-items-center">
             <div class="col-1">รหัสรุ่น</div>
-            <div class="col-2" id="model-id"></div>
-            <div class="col-1"><span class="badge badge-pill badge-info" id="cc">110 CC</span></div>
+            <div class="col-2 bd-callout" id="model-id">
+                <p>HELLO</p>
+            </div>
+            <div class="col-5 text-center">
+                <span class="badge badge-pill badge-success" id="cc100">100 CC</span>
+                <span class="badge badge-pill badge-light" id="cc150">150 CC</span>
+                <span class="badge badge-pill badge-light" id="cc200">200 CC</span>
+                <span class="badge badge-pill badge-light" id="cc250">250 CC</span>
+                <span class="badge badge-pill badge-light" id="cc300">300 CC</span>
+            </div>
         </div>
-        <br />
+        <br>
         <div class="row align-items-center">
             <div class="col-1">ราคา</div>
             <div class="col-2">
@@ -91,25 +109,25 @@
                 </div>
             </div>
         </div>
-        <br />
+        <br>
         <div class="row align-items-center">
             <div class="col-1">ไฟแนนซ์</div>
             <div class="col-5">
                 <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
-                    <label class="btn btn-outline-primary active">
+                    <label class="btn btn-outline-primary btn-sm">
+                        <input type="radio" name="leasing" value="OFF">เงินสด
+                    </label>
+                    <label class="btn btn-outline-primary btn-sm active">
                         <input type="radio" name="leasing" value="GE" checked>กรุงศรี
                     </label>
-                    <label class="btn btn-outline-primary">
+                    <label class="btn btn-outline-primary btn-sm">
                         <input type="radio" name="leasing" value="TL">ทีลิสซิ่ง
-                    </label>
-                    <label class="btn btn-outline-primary">
-                        <input type="radio" name="leasing" value="OFF">-
                     </label>
                 </div>
             </div>
             <div class="col-1"><p class="h6" style="color:white" id="loan-price">ยอดจัด</p></div>
         </div>
-        <br />
+        <br>
         <div class="row align-items-center">
             <div class="col-1">ดาวน์</div>
             <div class="col-5">
@@ -147,7 +165,7 @@
                 </div>
             </div>
         </div>
-        <br />
+        <br>
         <div class="row align-items-center">
             <div class="col-1">ผ่อน</div>
             <div class="col-5">
@@ -185,9 +203,16 @@
                 </div>
             </div>
         </div>
-        <hr>
+        <br>
     </div>
     </form>
+    <nav class="navbar fixed-bottom navbar-light bg-light" style="display:none">
+        <form class="form-inline">
+            <span class="navbar-text">Scoring</span>
+            <button class="btn btn-sm btn-outline-success" type="button" disabled>Main button</button>
+            <button class="btn btn-sm btn-outline-secondary" type="button" disabled>Second button</button>
+        </form>
+    </nav>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -199,12 +224,10 @@
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
         function ceil(leasing, amount) {
-            if (leasing == 'GE') {
-                return Math.ceil(amount);
-            } else if (leasing == 'TL') {
+            if (leasing == 'TL') {
                 return Math.ceil(amount / 5) * 5;
             }
-            return amount;
+            return Math.ceil(amount);
         }
         function calculate(price, leasing, down, int, period) {
             var loan = price - (price * down / 100);
@@ -216,13 +239,11 @@
             var leasing = $("input[name='leasing']:checked").val().toUpperCase();
             var down = $("input[name='down']:checked").val();
             //alert('Leasing: ' + leasing + '\nPrice: ' + cash_price);
-            var interest = 1.99;
+            var interest = 0;
             if (leasing == 'GE') {
                 interest = 1.95;
             } else if (leasing == 'TL') {
                 interest = 1.99;
-            } else {
-                alert("Leasing Name Error: " + leasing);
             }
             $("#down1").text("ฟรี");
             $("#down2").text(numberWithCommas(cash_price * 0.05));
@@ -304,7 +325,7 @@
             });
 
             $("#clear").click(function() {
-                $("#search").text();
+                $("#search").val("");
             });
         } );
     </script>
