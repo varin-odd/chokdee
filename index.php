@@ -1,11 +1,11 @@
 <?php
     $mkt_name = '
-    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดรัมเบรก)", category: "HONDA", modelId: "AFS110KDFL 2TH", cash: 37500, cost: 35700, gePrice: 49500 },
-    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110KSEL TH", cash: 41000, cost: 39300, gePrice: 49900 },
-    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทมือ ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110MSFL TH", cash: 41000, cost: 42000, gePrice: 51900 },
-    { label: "Wave110I (เวฟ 110ไอ ล้อแม๊ก สตาร์ทมือ ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110MCFL TH", cash: 41000, cost: 43900, gePrice: 54400 },
-    { label: "YZF-R15", category: "YAMAHA", modelId: "(รอเลือกสี)", cash: 97000, cost: 93500, gePrice: 107000 },
-    { label: "YZF-R3", category: "YAMAHA", modelId: "B5L600", cash: 97500, cost: 182500, gePrice: 107500 }';
+    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดรัมเบรก)", category: "HONDA", modelId: "AFS110KDFL 2TH", cc: 110, cash: 37500, cost: 35700, gePrice: 49500 },
+    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110KSEL TH", cc: 110, cash: 41000, cost: 39300, gePrice: 49900 },
+    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทมือ ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110MSFL TH", cc: 110, cash: 41000, cost: 42000, gePrice: 51900 },
+    { label: "Wave110I (เวฟ 110ไอ ล้อแม๊ก สตาร์ทมือ ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110MCFL TH", cc: 110, cash: 41000, cost: 43900, gePrice: 54400 },
+    { label: "YZF-R15", category: "YAMAHA", modelId: "(รอเลือกสี)", cc: 150, cash: 97000, cost: 93500, gePrice: 107000 },
+    { label: "YZF-R3", category: "YAMAHA", modelId: "B5L600", cc: 150, cash: 97500, cost: 182500, gePrice: 107500 }';
 ?>
 <!doctype html>
 <html lang="en">
@@ -80,30 +80,40 @@
             <div class="col-1">โค้ด</div>
             <div class="col-3 bd-callout" id="model-id"></div>
             <div class="col-6 text-right">
-                <span class="badge badge-pill badge-success" id="cc100">100 CC</span>
-                <span class="badge badge-pill badge-light" id="cc150">150 CC</span>
-                <span class="badge badge-pill badge-light" id="cc200">200 CC</span>
-                <span class="badge badge-pill badge-light" id="cc250">250 CC</span>
-                <span class="badge badge-pill badge-light" id="cc300">300 CC</span>
+                <span class="badge badge-pill badge-light badge-cc" id="cc100">100 CC</span>
+                <span class="badge badge-pill badge-light badge-cc" id="cc150">150 CC</span>
+                <span class="badge badge-pill badge-light badge-cc" id="cc200">200 CC</span>
+                <span class="badge badge-pill badge-light badge-cc" id="cc250">250 CC</span>
+                <span class="badge badge-pill badge-light badge-cc" id="cc300">300 CC</span>
             </div>
         </div>
         <br>
         <div class="row align-items-center">
             <div class="col-1">ราคา</div>
             <div class="col-2">
-                <button type="button" class="btn btn-success btn-sm btn-block" id="cash-price">97,000
-                    <span class="badge badge-pill badge-danger" id="cost-price">8.5</span>
+                <button type="button" class="btn btn-success btn-sm btn-block">
+                    <span id="cash-price">&nbsp;</span><br>
+                    <span class="badge badge-pill badge-danger" id="cost-price"></span>
                 </button>
             </div>
-            <div class="col-3">+ทะเบียน,พรบ.,ประกัน</div>
-            <div class="col-4">
+            <div class="col-1 text-center"><span class="badge badge-pill badge-dark">+</span></div>
+            <div class="col-1 text-center">ทะเบียน<br>พรบ.</div>
+            <div class="col-2">
+                <button type="button" class="btn btn-success btn-sm btn-block">
+                    <span id="cc-price">1,000</span>
+                </button>
+            </div>
+            <div class="col-1">ประกัน<br>(หาย)</div>
+            <div class="col-2">
                 <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                     <label class="btn btn-outline-success btn-sm active">
-                        <input type="radio" name="additional" id="additional1" checked>1,500
+                        <input type="radio" name="additional" id="additional1" checked>
+                        <span id="wty-1year-price">1,800</span><br>
                         <span class="badge badge-pill badge-light">1 ปี</span>
                     </label>
                     <label class="btn btn-outline-success btn-sm">
-                        <input type="radio" name="additional" id="additional2">2,500
+                        <input type="radio" name="additional" id="additional2">
+                        <span id="wty-2year-price">2,500</span><br>
                         <span class="badge badge-pill badge-light">2 ปี</span>
                     </label>
                 </div>
@@ -115,19 +125,67 @@
             <div class="col-9">
                 <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                     <label class="btn btn-outline-success btn-sm">
-                        <input type="radio" name="leasing" value="CASH">เงินสด
+                        <input type="radio" name="leasing" value="CASH">เงินสด<br>
+                        <span class="badge badge-pill badge-warning" id="cash-price2"></span>
                     </label>
                     <label class="btn btn-outline-primary btn-sm active">
-                        <input type="radio" name="leasing" value="GE" checked>กรุงศรี
+                        <input type="radio" name="leasing" value="GE" checked>กรุงศรี<br>
+                        <span class="badge badge-pill badge-warning" id="ge-price"></span>
                     </label>
                     <label class="btn btn-outline-primary btn-sm">
-                        <input type="radio" name="leasing" value="TL">ทีลิสซิ่ง
+                        <input type="radio" name="leasing" value="TL">ทีลิสซิ่ง<br>
+                        <span class="badge badge-pill badge-warning" id="tl-price"></span>
                     </label>
                 </div>
             </div>
         </div>
         <br>
         <div id="leasing-sections">
+            <div class="row align-items-center">
+                <div class="col-1">ดอกเบี้ย</div>
+                <div class="col-4">
+                    <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons" id="interest-ge-section">
+                        <label class="btn btn-outline-primary btn-sm active">
+                            <input type="radio" name="down" value="2.3" checked>2.3%<br>
+                            <span class="badge badge-pill badge-danger">3.2</span>
+                        </label>
+                        <label class="btn btn-outline-primary btn-sm">
+                            <input type="radio" name="down" value="2.1">2.1%<br>
+                            <span class="badge badge-pill badge-danger">3.0</span>
+                        </label>
+                        <label class="btn btn-outline-primary btn-sm">
+                            <input type="radio" name="down" value="1.95">1.95%<br>
+                            <span class="badge badge-pill badge-danger">1.5</span>
+                        </label>
+                        <label class="btn btn-outline-primary btn-sm">
+                            <input type="radio" name="down" value="1.85">1.85%<br>
+                            <span class="badge badge-pill badge-danger">1.0</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-4">
+                    <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons" id="interest-tl-section">
+                        <label class="btn btn-outline-primary btn-sm active">
+                            <input type="radio" name="down" value="1.99" checked>1.99%<br>
+                            <span class="badge badge-pill badge-danger">3.2</span>
+                        </label>
+                        <label class="btn btn-outline-primary btn-sm">
+                            <input type="radio" name="down" value="1.85">1.85%<br>
+                            <span class="badge badge-pill badge-danger">2.7</span>
+                        </label>
+                        <label class="btn btn-outline-primary btn-sm">
+                            <input type="radio" name="down" value="1.59">1.59%<br>
+                            <span class="badge badge-pill badge-danger">2.2</span>
+                        </label>
+                        <label class="btn btn-outline-primary btn-sm">
+                            <input type="radio" name="down" value="1.70">1.70%<br>
+                            <span class="badge badge-pill badge-danger">0.0</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
             <div class="row align-items-center">
                 <div class="col-1">ดาวน์</div>
                 <div class="col-9">
@@ -240,14 +298,18 @@
             var leasing = $("input[name='leasing']:checked").val().toUpperCase();
             var down = $("input[name='down']:checked").val();
             var interest = 0;
+            $("#interest-ge-section").hide();
+            $("#interest-tl-section").hide();
             if (leasing == 'CASH') {
                 $("#leasing-sections").hide();
             } else if (leasing == 'GE') {
                 interest = 1.95;
                 $("#leasing-sections").show();
+                $("#interest-ge-section").show();
             } else if (leasing == 'TL') {
                 interest = 1.99;
                 $("#leasing-sections").show();
+                $("#interest-tl-section").show();
             }
             $("#down1").text("ฟรี");
             $("#down2").text(numberWithCommas(cash_price * 0.05));
@@ -312,7 +374,43 @@
                 var object = searchValueInArray(typename, data);
                 $("#model-id").text(object.modelId);
                 $("#cash-price").text(numberWithCommas(object.cash));
+                $("#cash-price2").text($("#cash-price").text());
+                $("#ge-price").text(numberWithCommas(object.gePrice));
                 $("#cost-price").text((object.cash - object.cost) / 1000);
+                $(".badge-cc").removeClass("badge-light");
+                $(".badge-cc").removeClass("badge-success");
+                $(".badge-cc").addClass("badge-light");
+                if (object.cc < 150) {
+                    $("#cc100").removeClass("badge-light");
+                    $("#cc100").addClass("badge-success");
+                    $("#cc-price").text("1,000");
+                    $("#wty-1year-price").text("1,800");
+                    $("#wty-2year-price").text("2,500");
+                } else if (object.cc < 200) {
+                    $("#cc150").removeClass("badge-light");
+                    $("#cc150").addClass("badge-success");
+                    $("#cc-price").text("1,500");
+                    $("#wty-1year-price").text("2,500");
+                    $("#wty-2year-price").text("3,500");
+                } else if (object.cc < 250) {
+                    $("#cc200").removeClass("badge-light");
+                    $("#cc200").addClass("badge-success");
+                    $("#cc-price").text("1,500");
+                    $("#wty-1year-price").text("2,500");
+                    $("#wty-2year-price").text("3,500");
+                } else if (object.cc < 300) {
+                    $("#cc250").removeClass("badge-light");
+                    $("#cc250").addClass("badge-success");
+                    $("#cc-price").text("1,500");
+                    $("#wty-1year-price").text("2,500");
+                    $("#wty-2year-price").text("3,500");
+                } else {
+                    $("#cc300").removeClass("badge-light");
+                    $("#cc300").addClass("badge-success");
+                    $("#cc-price").text("2,000");
+                    $("#wty-1year-price").text("3,600");
+                    $("#wty-2year-price").text("4,500");
+                }
                 radioChanged();
                 if(typename == 'Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดรัมเบรก)') {
                     $("#model1234").show();
