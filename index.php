@@ -44,7 +44,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-1">รุ่น</div>
-            <div class="col-5 input-group input-group-sm">
+            <div class="col-7 input-group input-group-sm">
                 <input class="form-control" id="search" placeholder="ค้นหา">
             </div>
             <div class="col-2">
@@ -57,8 +57,8 @@
             </div>
         </div>
         <br>
-        <div class="row align-items-center">
-            <div class="col-1">MODEL</div>
+        <div class="row align-items-center" style="display:none" id="color-section">
+            <div class="col-1">สี</div>
             <div class="col">
                 <div style="display:none" class="btn-group btn-group-toggle model-group" id="model1234" data-toggle="buttons">
                     <label class="btn btn-secondary model model1 active">
@@ -77,11 +77,9 @@
             </div>
         </div>
         <div class="row align-items-center">
-            <div class="col-1">รหัสรุ่น</div>
-            <div class="col-2 bd-callout" id="model-id">
-                <p>HELLO</p>
-            </div>
-            <div class="col-5 text-center">
+            <div class="col-1">โค้ด</div>
+            <div class="col-3 bd-callout" id="model-id"></div>
+            <div class="col-6 text-right">
                 <span class="badge badge-pill badge-success" id="cc100">100 CC</span>
                 <span class="badge badge-pill badge-light" id="cc150">150 CC</span>
                 <span class="badge badge-pill badge-light" id="cc200">200 CC</span>
@@ -97,8 +95,8 @@
                     <span class="badge badge-pill badge-danger" id="cost-price">8.5</span>
                 </button>
             </div>
-            <div class="col-2">+ทะเบียน,พรบ.,ประกัน</div>
-            <div class="col-3">
+            <div class="col-3">+ทะเบียน,พรบ.,ประกัน</div>
+            <div class="col-4">
                 <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                     <label class="btn btn-outline-success btn-sm active">
                         <input type="radio" name="additional" id="additional1" checked>1,500
@@ -114,7 +112,7 @@
         <br>
         <div class="row align-items-center">
             <div class="col-1">ไฟแนนซ์</div>
-            <div class="col-5">
+            <div class="col-9">
                 <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                     <label class="btn btn-outline-success btn-sm">
                         <input type="radio" name="leasing" value="CASH">เงินสด
@@ -127,13 +125,12 @@
                     </label>
                 </div>
             </div>
-            <div class="col-1"><p class="h6" style="color:white" id="loan-price">ยอดจัด</p></div>
         </div>
         <br>
         <div id="leasing-sections">
             <div class="row align-items-center">
                 <div class="col-1">ดาวน์</div>
-                <div class="col-5">
+                <div class="col-9">
                     <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                         <label class="btn btn-outline-primary btn-sm active">
                             <input type="radio" name="down" value="0" checked>
@@ -171,7 +168,7 @@
             <br>
             <div class="row align-items-center">
                 <div class="col-1">ผ่อน</div>
-                <div class="col-5">
+                <div class="col-9">
                     <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                         <label class="btn btn-outline-primary btn-sm active">
                             <input type="radio" name="period" value="0" checked>
