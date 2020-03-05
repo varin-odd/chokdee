@@ -33,7 +33,7 @@
   </head>
   <body>
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand font-weight-light" href="#">
             <i class="material-icons">motorcycle</i>
             Testing System
             <i class="material-icons">sports_motorsports</i>
@@ -43,8 +43,8 @@
     <form class="opening">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-1">รุ่น</div>
-            <div class="col-7 input-group input-group-sm">
+            <div class="col-1 font-weight-lighter">รุ่น</div>
+            <div class="col-9 input-group input-group-sm">
                 <input class="form-control" id="search" placeholder="ค้นหา">
             </div>
             <div class="col-2">
@@ -58,7 +58,7 @@
         </div>
         <br>
         <div class="row align-items-center" style="display:none" id="color-section">
-            <div class="col-1">สี</div>
+            <div class="col-1 font-weight-lighter">สี</div>
             <div class="col">
                 <div style="display:none" class="btn-group btn-group-toggle model-group" id="model1234" data-toggle="buttons">
                     <label class="btn btn-secondary model model1 active">
@@ -77,9 +77,9 @@
             </div>
         </div>
         <div class="row align-items-center">
-            <div class="col-1">โค้ด</div>
+            <div class="col-1 font-weight-lighter">โค้ด</div>
             <div class="col-3 bd-callout" id="model-id"></div>
-            <div class="col-6 text-right">
+            <div class="col-8 text-right">
                 <span class="badge badge-pill badge-light badge-cc" id="cc100">100 CC</span>
                 <span class="badge badge-pill badge-light badge-cc" id="cc150">150 CC</span>
                 <span class="badge badge-pill badge-light badge-cc" id="cc200">200 CC</span>
@@ -89,7 +89,7 @@
         </div>
         <br>
         <div class="row align-items-center">
-            <div class="col-1">ราคา</div>
+            <div class="col-1 font-weight-lighter">ราคา</div>
             <div class="col-2">
                 <button type="button" class="btn btn-success btn-sm btn-block">
                     <span id="cash-price">&nbsp;</span><br>
@@ -97,13 +97,13 @@
                 </button>
             </div>
             <div class="col-1 text-center"><span class="badge badge-pill badge-dark">+</span></div>
-            <div class="col-1 text-center">ทะเบียน<br>พรบ.</div>
+            <div class="col-2 text-center font-weight-lighter">ทะเบียน&พรบ.</div>
             <div class="col-2">
                 <button type="button" class="btn btn-success btn-sm btn-block">
                     <span id="cc-price">1,000</span>
                 </button>
             </div>
-            <div class="col-1">ประกัน<br>(หาย)</div>
+            <div class="col-2 text-center font-weight-lighter">ประกันรถหาย</div>
             <div class="col-2">
                 <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                     <label class="btn btn-outline-success btn-sm active">
@@ -121,8 +121,8 @@
         </div>
         <br>
         <div class="row align-items-center">
-            <div class="col-1">ไฟแนนซ์</div>
-            <div class="col-9">
+            <div class="col-1 font-weight-lighter">ไฟแนนซ์</div>
+            <div class="col-11">
                 <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                     <label class="btn btn-outline-success btn-sm">
                         <input type="radio" name="leasing" value="CASH">เงินสด<br>
@@ -142,8 +142,8 @@
         <br>
         <div id="leasing-sections">
             <div class="row align-items-center">
-                <div class="col-1">ดอกเบี้ย</div>
-                <div class="col-4">
+                <div class="col-1 font-weight-lighter">ดอกเบี้ย</div>
+                <div class="col-5">
                     <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons" id="interest-ge-section">
                         <label class="btn btn-outline-primary btn-sm active">
                             <input type="radio" name="down" value="2.3" checked>2.3%<br>
@@ -164,7 +164,7 @@
                     </div>
                 </div>
                 <div class="col-1"></div>
-                <div class="col-4">
+                <div class="col-5">
                     <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons" id="interest-tl-section">
                         <label class="btn btn-outline-primary btn-sm active">
                             <input type="radio" name="down" value="1.99" checked>1.99%<br>
@@ -187,8 +187,8 @@
             </div>
             <br>
             <div class="row align-items-center">
-                <div class="col-1">ดาวน์</div>
-                <div class="col-9">
+                <div class="col-1 font-weight-lighter">ดาวน์</div>
+                <div class="col-11">
                     <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                         <label class="btn btn-outline-primary btn-sm active">
                             <input type="radio" name="down" value="0" checked>
@@ -225,8 +225,8 @@
             </div>
             <br>
             <div class="row align-items-center">
-                <div class="col-1">ผ่อน</div>
-                <div class="col-9">
+                <div class="col-1 font-weight-lighter">ผ่อน</div>
+                <div class="col-11">
                     <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                         <label class="btn btn-outline-primary btn-sm active">
                             <input type="radio" name="period" value="0" checked>
