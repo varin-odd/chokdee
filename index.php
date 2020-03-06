@@ -32,7 +32,7 @@
     { label: 'GT125', category: 'YAMAHA', modelId: 'B2H300', cc: 125, cash: 47100, cost: 45600, gePrice: 53000, tlPrice: 53500 },
     { label: 'FINO125 ACTIVE FASHION', category: 'YAMAHA', modelId: 'BB9800', cc: 125, cash: 46000, cost: 45000, gePrice: 50900, tlPrice: 51000 },
     { label: 'FINO รุ่นใหม่ ล้อลวด', category: 'YAMAHA', modelId: 'BB9900', cc: 125, cash: 47000, cost: 45700, gePrice: 51900, tlPrice: 51500 },
-    { label: 'FINO รุุ่่นใหม่ ล้อแม็ค', category: 'YAMAHA', modelId: 'BS9300', cc: 125, cash: 52500, cost: 50700, gePrice: 58000, tlPrice: 57500 },
+    { label: 'FINO รุ่นใหม่ ล้อแม็ค', category: 'YAMAHA', modelId: 'BS9300', cc: 125, cash: 52500, cost: 50700, gePrice: 58000, tlPrice: 57500 },
     { label: 'FREE GO', category: 'YAMAHA', modelId: 'BOP100', cc: 125, cash: 51200, cost: 49200, gePrice: 57200, tlPrice: 56800 },
     { label: 'LEXI ABS', category: 'YAMAHA', modelId: 'B4H300', cc: 125, cash: 67900, cost: 65900, gePrice: 74000, tlPrice: 74000 },
     { label: 'LEXI รุ่นใหม่ สีแดง', category: 'YAMAHA', modelId: 'B4H400', cc: 125, cash: 60100, cost: 58700, gePrice: 65200, tlPrice: 65500 },
@@ -88,7 +88,7 @@
         </a>
     </nav>
     <br>
-    <form class="opening">
+    <!--form class="opening"-->
     <div class="container">
         <div class="row align-items-center">
             <div class="col-1 font-weight-lighter">รุ่น</div>
@@ -141,9 +141,6 @@
             <div class="col-2">
                 <button type="button" class="btn btn-success btn-sm btn-block">
                     <span id="cash-price">&nbsp;</span>
-                    <?php if ($isAdmin) { ?>
-                        <br><span class="badge badge-pill badge-danger" id="cost-price"></span>
-                    <?php } ?>
                 </button>
             </div>
             <div class="col-1 text-center"><span class="badge badge-pill badge-dark">+</span></div>
@@ -176,20 +173,23 @@
                 <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                     <label class="btn btn-outline-success btn-sm">
                         <input type="radio" name="leasing" value="CASH">เงินสด
+                        <span class="badge badge-pill badge-warning" id="cash-price2"></span>
                         <?php if ($isAdmin) { ?>
-                            <br><span class="badge badge-pill badge-warning" id="cash-price2"></span>
+                            <br><span class="badge badge-pill badge-danger" id="margin-cash"></span>
                         <?php } ?>
                     </label>
                     <label class="btn btn-outline-primary btn-sm active">
                         <input type="radio" name="leasing" value="GE" checked>กรุงศรี
+                        <span class="badge badge-pill badge-warning" id="ge-price"></span>
                         <?php if ($isAdmin) { ?>
-                            <br><span class="badge badge-pill badge-warning" id="ge-price"></span>
+                            <br><span class="badge badge-pill badge-danger" id="margin-ge"></span>
                         <?php } ?>
                     </label>
                     <label class="btn btn-outline-primary btn-sm">
                         <input type="radio" name="leasing" value="TL">ทีลิสซิ่ง
+                        <span class="badge badge-pill badge-warning" id="tl-price"></span>
                         <?php if ($isAdmin) { ?>
-                            <br><span class="badge badge-pill badge-warning" id="tl-price"></span>
+                            <br><span class="badge badge-pill badge-danger" id="margin-tl"></span>
                         <?php } ?>
                     </label>
                 </div>
@@ -199,57 +199,56 @@
         <div id="leasing-sections">
             <div class="row align-items-center">
                 <div class="col-1 font-weight-lighter">ดอกเบี้ย</div>
-                <div class="col-5">
-                    <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons" id="interest-ge-section">
+                <div class="col-5" id="interest-ge-section">
+                    <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                         <label class="btn btn-outline-primary btn-sm active">
-                            <input type="radio" name="down" value="2.3" checked>2.3%
+                            <input type="radio" name="ge-interest" value="2.3" checked>2.3%
                             <?php if ($isAdmin) { ?>
                                 <br><span class="badge badge-pill badge-danger">3.2</span>
                             <?php } ?>
                         </label>
                         <label class="btn btn-outline-primary btn-sm">
-                            <input type="radio" name="down" value="2.1">2.1%
+                            <input type="radio" name="ge-interest" value="2.1">2.1%
                             <?php if ($isAdmin) { ?>
                                 <br><span class="badge badge-pill badge-danger">3.0</span>
                             <?php } ?>
                         </label>
                         <label class="btn btn-outline-primary btn-sm">
-                            <input type="radio" name="down" value="1.95">1.95%
+                            <input type="radio" name="ge-interest" value="1.95">1.95%
                             <?php if ($isAdmin) { ?>
                                 <br><span class="badge badge-pill badge-danger">1.5</span>
                             <?php } ?>
                         </label>
                         <label class="btn btn-outline-primary btn-sm">
-                            <input type="radio" name="down" value="1.85">1.85%
+                            <input type="radio" name="ge-interest" value="1.85">1.85%
                             <?php if ($isAdmin) { ?>
                                 <br><span class="badge badge-pill badge-danger">1.0</span>
                             <?php } ?>
                         </label>
                     </div>
                 </div>
-                <div class="col-1"></div>
-                <div class="col-5">
-                    <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons" id="interest-tl-section">
+                <div class="col-5" id="interest-tl-section">
+                    <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                         <label class="btn btn-outline-primary btn-sm active">
-                            <input type="radio" name="down" value="1.99" checked>1.99%
+                            <input type="radio" name="tl-interest" value="1.99" checked>1.99%
                             <?php if ($isAdmin) { ?>
                                 <br><span class="badge badge-pill badge-danger">3.2</span>
                             <?php } ?>
                         </label>
                         <label class="btn btn-outline-primary btn-sm">
-                            <input type="radio" name="down" value="1.85">1.85%
+                            <input type="radio" name="tl-interest" value="1.85">1.85%
                             <?php if ($isAdmin) { ?>
                                 <br><span class="badge badge-pill badge-danger">2.7</span>
                             <?php } ?>
                         </label>
                         <label class="btn btn-outline-primary btn-sm">
-                            <input type="radio" name="down" value="1.59">1.59%
+                            <input type="radio" name="tl-interest" value="1.59">1.59%
                             <?php if ($isAdmin) { ?>
                                 <br><span class="badge badge-pill badge-danger">2.2</span>
                             <?php } ?>
                         </label>
                         <label class="btn btn-outline-primary btn-sm">
-                            <input type="radio" name="down" value="1.70">1.70%
+                            <input type="radio" name="tl-interest" value="1.70">1.70%
                             <?php if ($isAdmin) { ?>
                                 <br><span class="badge badge-pill badge-danger">0.0</span>
                             <?php } ?>
@@ -336,14 +335,12 @@
             <br>
         </div>
     </div>
-    </form>
+    <!--/form-->
     <?php if ($isAdmin) { ?>
         <nav class="navbar fixed-bottom navbar-light bg-light">
-            <form class="form-inline">
-                <span class="navbar-text">Scoring</span>
-                <button class="btn btn-sm btn-outline-success" type="button" disabled>Main button</button>
-                <button class="btn btn-sm btn-outline-secondary" type="button" disabled>Second button</button>
-            </form>
+            <p class="h4 text-success font-weight-lighter" id="scoring-margin"></p>
+            <p class="h4 text-success font-weight-lighter" id="scoring-comm"></p>
+            <p class="h4 text-success font-weight-lighter" id="scoring-net"></p>
         </nav>
     <?php } ?>
     <!-- Optional JavaScript -->
@@ -367,24 +364,54 @@
             var installment = ((loan * int / 100 * period) + loan) / period;
             return ceil(leasing, installment);
         }
+        function commission() {
+            var leasing = $("input[name='leasing']:checked").val().toUpperCase();
+            if (leasing == 'GE') {
+                interest = $("input[name='ge-interest']:checked").val();
+                if (interest == 2.3) { return 3200; }
+                else if (interest == 2.1) { return 3000; }
+                else if (interest == 1.95) { return 1500; }
+                else if (interest == 1.85) { return 1000; }
+                else { return 0; }
+            } else if (leasing == 'TL') {
+                interest = $("input[name='tl-interest']:checked").val();
+                if (interest == 1.99) { return 3200; }
+                else if (interest == 1.85) { return 2700; }
+                else if (interest == 1.59) { return 2200; }
+                else if (interest == 1.7) { return 0; }
+                else { return 0; }
+            }
+            return 0;
+        }
         function radioChanged() {
             var cash_price = Number($("#cash-price").text().replace(/,/g, ''));
             var leasing = $("input[name='leasing']:checked").val().toUpperCase();
             var down = $("input[name='down']:checked").val();
             var interest = 0;
+            var margin = 0;
+            var comm = commission();
             $("#interest-ge-section").hide();
             $("#interest-tl-section").hide();
             if (leasing == 'CASH') {
                 $("#leasing-sections").hide();
+                margin = object.cash - object.cost;
             } else if (leasing == 'GE') {
-                interest = 1.95;
+                interest = $("input[name='ge-interest']:checked").val();
                 $("#leasing-sections").show();
                 $("#interest-ge-section").show();
+                margin = object.gePrice - object.cost;
             } else if (leasing == 'TL') {
-                interest = 1.99;
+                interest = $("input[name='tl-interest']:checked").val();
                 $("#leasing-sections").show();
                 $("#interest-tl-section").show();
+                margin = object.tlPrice - object.cost;
             }
+            $("#margin-cash").text((object.cash - object.cost) / 1000);
+            $("#margin-ge").text((object.gePrice - object.cost) / 1000);
+            $("#margin-tl").text((object.tlPrice - object.cost) / 1000);
+            $("#scoring-margin").text("MG: " + numberWithCommas(margin));
+            $("#scoring-comm").text("COMM: " + numberWithCommas(comm));
+            $("#scoring-net").text("NET: " + numberWithCommas(margin + comm));
             $("#down1").text("ฟรี");
             $("#down2").text(numberWithCommas(cash_price * 0.05));
             $("#down3").text(numberWithCommas(cash_price * 0.10));
@@ -396,6 +423,7 @@
             $("#install4").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 30)));
             $("#install5").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 36)));
         }
+        var object;
         $( function() {
             //$("input[name='leasing']").click(function(){
             $("input[type='radio']").click(function(){
@@ -445,13 +473,12 @@
                 $(".model-group").hide();
                 $(".model").removeClass("active");
                 var typename = $("#search").val();
-                var object = searchValueInArray(typename, data);
+                object = searchValueInArray(typename, data);
                 $("#model-id").text(object.modelId);
                 $("#cash-price").text(numberWithCommas(object.cash));
                 $("#cash-price2").text($("#cash-price").text());
                 $("#ge-price").text(numberWithCommas(object.gePrice));
                 $("#tl-price").text(numberWithCommas(object.tlPrice));
-                $("#cost-price").text((object.cash - object.cost) / 1000);
                 $(".badge-cc").removeClass("badge-light");
                 $(".badge-cc").removeClass("badge-success");
                 $(".badge-cc").addClass("badge-light");
@@ -487,7 +514,7 @@
                     $("#wty-2year-price").text("4,500");
                 }
                 radioChanged();
-                if(typename == 'Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดรัมเบรก)') {
+                /*if(typename == 'Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดรัมเบรก)') {
                     $("#model1234").show();
                     $(".model1").addClass("active");
                     $(".model1").find("input").prop("checked", true);
@@ -498,7 +525,7 @@
                 } else if(typename == 'R15') {  
                     $(".model3").addClass("active");
                     $(".model3").find("input").prop("checked", true);
-                }
+                }*/
             }
 
             $("#search").change(function() {
