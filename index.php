@@ -50,6 +50,10 @@
     { label: 'EXCITER 150 รุ่นใหม่', category: 'YAMAHA', modelId: 'B15800', cc: 150, cash: 63000, cost: 61500, gePrice: 64700, tlPrice: 64600 },
     { label: 'EXCITER 150 รุ่นใหม่', category: 'YAMAHA', modelId: 'B15A00', cc: 150, cash: 63000, cost: 61500, gePrice: 64700, tlPrice: 64600 },
     ";
+    $isAdmin = False;
+    if (!empty($_GET["id"]) && $_GET["id"]=="admin") {
+        $isAdmin = True;
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -136,8 +140,10 @@
             <div class="col-1 font-weight-lighter">ราคา</div>
             <div class="col-2">
                 <button type="button" class="btn btn-success btn-sm btn-block">
-                    <span id="cash-price">&nbsp;</span><br>
-                    <span class="badge badge-pill badge-danger" id="cost-price"></span>
+                    <span id="cash-price">&nbsp;</span>
+                    <?php if ($isAdmin) { ?>
+                        <br><span class="badge badge-pill badge-danger" id="cost-price"></span>
+                    <?php } ?>
                 </button>
             </div>
             <div class="col-1 text-center"><span class="badge badge-pill badge-dark">+</span></div>
@@ -169,16 +175,22 @@
             <div class="col-11">
                 <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                     <label class="btn btn-outline-success btn-sm">
-                        <input type="radio" name="leasing" value="CASH">เงินสด<br>
-                        <span class="badge badge-pill badge-warning" id="cash-price2"></span>
+                        <input type="radio" name="leasing" value="CASH">เงินสด
+                        <?php if ($isAdmin) { ?>
+                            <br><span class="badge badge-pill badge-warning" id="cash-price2"></span>
+                        <?php } ?>
                     </label>
                     <label class="btn btn-outline-primary btn-sm active">
-                        <input type="radio" name="leasing" value="GE" checked>กรุงศรี<br>
-                        <span class="badge badge-pill badge-warning" id="ge-price"></span>
+                        <input type="radio" name="leasing" value="GE" checked>กรุงศรี
+                        <?php if ($isAdmin) { ?>
+                            <br><span class="badge badge-pill badge-warning" id="ge-price"></span>
+                        <?php } ?>
                     </label>
                     <label class="btn btn-outline-primary btn-sm">
-                        <input type="radio" name="leasing" value="TL">ทีลิสซิ่ง<br>
-                        <span class="badge badge-pill badge-warning" id="tl-price"></span>
+                        <input type="radio" name="leasing" value="TL">ทีลิสซิ่ง
+                        <?php if ($isAdmin) { ?>
+                            <br><span class="badge badge-pill badge-warning" id="tl-price"></span>
+                        <?php } ?>
                     </label>
                 </div>
             </div>
@@ -190,20 +202,28 @@
                 <div class="col-5">
                     <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons" id="interest-ge-section">
                         <label class="btn btn-outline-primary btn-sm active">
-                            <input type="radio" name="down" value="2.3" checked>2.3%<br>
-                            <span class="badge badge-pill badge-danger">3.2</span>
+                            <input type="radio" name="down" value="2.3" checked>2.3%
+                            <?php if ($isAdmin) { ?>
+                                <br><span class="badge badge-pill badge-danger">3.2</span>
+                            <?php } ?>
                         </label>
                         <label class="btn btn-outline-primary btn-sm">
-                            <input type="radio" name="down" value="2.1">2.1%<br>
-                            <span class="badge badge-pill badge-danger">3.0</span>
+                            <input type="radio" name="down" value="2.1">2.1%
+                            <?php if ($isAdmin) { ?>
+                                <br><span class="badge badge-pill badge-danger">3.0</span>
+                            <?php } ?>
                         </label>
                         <label class="btn btn-outline-primary btn-sm">
-                            <input type="radio" name="down" value="1.95">1.95%<br>
-                            <span class="badge badge-pill badge-danger">1.5</span>
+                            <input type="radio" name="down" value="1.95">1.95%
+                            <?php if ($isAdmin) { ?>
+                                <br><span class="badge badge-pill badge-danger">1.5</span>
+                            <?php } ?>
                         </label>
                         <label class="btn btn-outline-primary btn-sm">
-                            <input type="radio" name="down" value="1.85">1.85%<br>
-                            <span class="badge badge-pill badge-danger">1.0</span>
+                            <input type="radio" name="down" value="1.85">1.85%
+                            <?php if ($isAdmin) { ?>
+                                <br><span class="badge badge-pill badge-danger">1.0</span>
+                            <?php } ?>
                         </label>
                     </div>
                 </div>
@@ -211,20 +231,28 @@
                 <div class="col-5">
                     <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons" id="interest-tl-section">
                         <label class="btn btn-outline-primary btn-sm active">
-                            <input type="radio" name="down" value="1.99" checked>1.99%<br>
-                            <span class="badge badge-pill badge-danger">3.2</span>
+                            <input type="radio" name="down" value="1.99" checked>1.99%
+                            <?php if ($isAdmin) { ?>
+                                <br><span class="badge badge-pill badge-danger">3.2</span>
+                            <?php } ?>
                         </label>
                         <label class="btn btn-outline-primary btn-sm">
-                            <input type="radio" name="down" value="1.85">1.85%<br>
-                            <span class="badge badge-pill badge-danger">2.7</span>
+                            <input type="radio" name="down" value="1.85">1.85%
+                            <?php if ($isAdmin) { ?>
+                                <br><span class="badge badge-pill badge-danger">2.7</span>
+                            <?php } ?>
                         </label>
                         <label class="btn btn-outline-primary btn-sm">
-                            <input type="radio" name="down" value="1.59">1.59%<br>
-                            <span class="badge badge-pill badge-danger">2.2</span>
+                            <input type="radio" name="down" value="1.59">1.59%
+                            <?php if ($isAdmin) { ?>
+                                <br><span class="badge badge-pill badge-danger">2.2</span>
+                            <?php } ?>
                         </label>
                         <label class="btn btn-outline-primary btn-sm">
-                            <input type="radio" name="down" value="1.70">1.70%<br>
-                            <span class="badge badge-pill badge-danger">0.0</span>
+                            <input type="radio" name="down" value="1.70">1.70%
+                            <?php if ($isAdmin) { ?>
+                                <br><span class="badge badge-pill badge-danger">0.0</span>
+                            <?php } ?>
                         </label>
                     </div>
                 </div>
@@ -309,13 +337,15 @@
         </div>
     </div>
     </form>
-    <nav class="navbar fixed-bottom navbar-light bg-light" style="display:none">
-        <form class="form-inline">
-            <span class="navbar-text">Scoring</span>
-            <button class="btn btn-sm btn-outline-success" type="button" disabled>Main button</button>
-            <button class="btn btn-sm btn-outline-secondary" type="button" disabled>Second button</button>
-        </form>
-    </nav>
+    <?php if ($isAdmin) { ?>
+        <nav class="navbar fixed-bottom navbar-light bg-light">
+            <form class="form-inline">
+                <span class="navbar-text">Scoring</span>
+                <button class="btn btn-sm btn-outline-success" type="button" disabled>Main button</button>
+                <button class="btn btn-sm btn-outline-secondary" type="button" disabled>Second button</button>
+            </form>
+        </nav>
+    <?php } ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
