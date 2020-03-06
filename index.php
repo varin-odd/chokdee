@@ -1,11 +1,55 @@
 <?php
-    $mkt_name = '
-    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดรัมเบรก)", category: "HONDA", modelId: "AFS110KDFL 2TH", cc: 110, cash: 37500, cost: 35700, gePrice: 49500 },
-    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110KSEL TH", cc: 110, cash: 41000, cost: 39300, gePrice: 49900 },
-    { label: "Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทมือ ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110MSFL TH", cc: 110, cash: 41000, cost: 42000, gePrice: 51900 },
-    { label: "Wave110I (เวฟ 110ไอ ล้อแม๊ก สตาร์ทมือ ดิสก์เบรกหน้า)", category: "HONDA", modelId: "AFS110MCFL TH", cc: 110, cash: 41000, cost: 43900, gePrice: 54400 },
-    { label: "YZF-R15", category: "YAMAHA", modelId: "(รอเลือกสี)", cc: 150, cash: 97000, cost: 93500, gePrice: 107000 },
-    { label: "YZF-R3", category: "YAMAHA", modelId: "B5L600", cc: 150, cash: 97500, cost: 182500, gePrice: 107500 }';
+    $mkt_name = "
+    { label: 'Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดรัมเบรก)', category: 'HONDA', modelId: 'AFS110KDFL2TH', cc: 110, cash: 37500, cost: 35700, gePrice: 44500, tlPrice: 44500 },
+    { label: 'Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทเท้า ดิสก์เบรกหน้า)', category: 'HONDA', modelId: 'AFS110KSFLTH', cc: 110, cash: 41000, cost: 39300, gePrice: 49900, tlPrice: 49800 },
+    { label: 'Wave110I (เวฟ 110ไอ ล้อซี่ลวด สตาร์ทมือ ดิสก์เบรกหน้า)', category: 'HONDA', modelId: 'AFS110MSFLTH', cc: 110, cash: 44000, cost: 42000, gePrice: 51900, tlPrice: 51800 },
+    { label: 'Wave110I (เวฟ 110ไอ ล้อแม๊ก สตาร์ทมือ ดิสก์เบรกหน้า)', category: 'HONDA', modelId: 'AFS110MCFLTH', cc: 110, cash: 45500, cost: 43900, gePrice: 54400, tlPrice: 54300 },
+    { label: 'WAVE 125I (เวฟ 125 ไอ ล้อซี่ลวด สตาร์ทมือ ดิสก์เบรกหน้า)', category: 'HONDA', modelId: 'AFS125MSFLTH', cc: 125, cash: 54500, cost: 53000, gePrice: 59600, tlPrice: 59500 },
+    { label: 'WAVE 125I (เวฟ 125 ไอ ล้อแม็ก สตาร์ทมือ ดิสก์เบรกหน้า)', category: 'HONDA', modelId: 'AFS125CSFLTH', cc: 125, cash: 57500, cost: 56000, gePrice: 62000, tlPrice: 61900 },
+    { label: 'Scoopy I Urban Team (ล้อซี่ลวด คอมบายเบรก Idling Stop)', category: 'HONDA', modelId: 'ACF110BTKTH', cc: 110, cash: 48400, cost: 46400, gePrice: 55200, tlPrice: 54300 },
+    { label: 'Scoopy I Prestige (ล้อซี่ลวด คอมบายเบรก Idling Stop)', category: 'HONDA', modelId: 'ACF110BTK2TH', cc: 110, cash: 48900, cost: 46900, gePrice: 55700, tlPrice: 54800 },
+    { label: 'Scoopy I CLUB 12 (ล้อแม็ก คอมบายเบรก Idling Stop)', category: 'HONDA', modelId: 'ACF110CBTKTH', cc: 110, cash: 52000, cost: 49900, gePrice: 60500, tlPrice: 60500 },
+    { label: 'Scoopy I KUMAMON SPECIAL EDITION (ล้อแม็ก คอมบายเบรก Idling Stop)', category: 'HONDA', modelId: 'ACF110CBTK2TH', cc: 110, cash: 54500, cost: 52200, gePrice: 56500, tlPrice: 63000 },
+    { label: 'CLICK150I (ล้อแม็ก คอมบายเบรก Idling Stop)', category: 'HONDA', modelId: 'ACB150CBTLTH', cc: 150, cash: 61500, cost: 59000, gePrice: 69600, tlPrice: 69500 },
+    { label: 'CLICK125I (ล้อซี่ลวด คอมบายเบรก Idling Stop)', category: 'HONDA', modelId: 'ACB125BTLTH', cc: 125, cash: 51500, cost: 49400, gePrice: 58500, tlPrice: 58500 },
+    { label: 'CLICK125I (ล้อแม็ก คอมบายเบรก Idling Stop)', category: 'HONDA', modelId: 'ACB125CBTLTH', cc: 125, cash: 55000, cost: 53200, gePrice: 61500, tlPrice: 61500 },
+    { label: 'Zoomer-X (ล้อแม็ก คอมบายเบรก Idling Stop)', category: 'HONDA', modelId: 'ACG110CBTLTH', cc: 110, cash: 56000, cost: 53600, gePrice: 62100, tlPrice: 62000 },
+    { label: 'MSX125 H', category: 'HONDA', modelId: 'MSX125JTH', cc: 125, cash: 67500, cost: 66500, gePrice: 78500, tlPrice: 78500 },
+    { label: 'MSX125 AH', category: 'HONDA', modelId: 'MSX125AJTH', cc: 125, cash: 74500, cost: 73500, gePrice: 86200, tlPrice: 86000 },
+    { label: 'PCX 150 (ล้อแม็ก คอมบายเบรก Idling Stop)', category: 'HONDA', modelId: 'WW150LTH', cc: 150, cash: 97500, cost: 91000, gePrice: 97500, tlPrice: 97500 },
+    { label: 'PCX HYBRID (ล้อแม็ก คอมบายเบรก Idling Stop)', category: 'HONDA', modelId: 'WW150HVJTH', cc: 150, cash: 114000, cost: 106000, gePrice: 114000, tlPrice: 114000 },
+    { label: 'CBR150R (ล้อแม็ก ดิสก์เบรก)', category: 'HONDA', modelId: 'CBR150RKTH', cc: 150, cash: 92570, cost: 87500, gePrice: 94500, tlPrice: 94500 },
+    { label: 'CBR150R (ล้อแม็ก ดิสก์เบรก ABS)', category: 'HONDA', modelId: 'CBR150RAK3TH', cc: 150, cash: 99610, cost: 94000, gePrice: 100900, tlPrice: 109000 },
+    { label: 'CBR150R (ล้อแม็ก ดิสก์เบรก ABS)', category: 'HONDA', modelId: 'CBR150RAK5TH', cc: 150, cash: 99610, cost: 94000, gePrice: 100900, tlPrice: 109000 },
+    { label: 'CB150R (ล้อแม็ก ดิสก์เบรก)', category: 'HONDA', modelId: 'CBF150NKTH', cc: 150, cash: 102960, cost: 97500, gePrice: 102000, tlPrice: 102000 },
+    { label: 'CB150R MORIWAKI LIMITED EDITION (ล้อแม็ก ดิสก์เบรก)', category: 'HONDA', modelId: 'CBF150NKTH1', cc: 150, cash: 110960, cost: 105000, gePrice: 108000, tlPrice: 108000 },
+    { label: 'CB150R (ล้อแม็ก ดิิสก์เบรก ABS)', category: 'HONDA', modelId: 'CBF150NAKTH', cc: 150, cash: 113270, cost: 107000, gePrice: 113000, tlPrice: 113000 },
+    { label: 'YZF-R15 ดำ เหลืองดำ', category: 'YAMAHA', modelId: 'B9B500', cc: 155, cash: 97000, cost: 93500, gePrice: 98400, tlPrice: 98500 },
+    { label: 'MT-15', category: 'YAMAHA', modelId: 'B7D100', cc: 155, cash: 98500, cost: 94200, gePrice: 102000, tlPrice: 102000 },
+    { label: 'XSR155', category: 'YAMAHA', modelId: 'B1V100', cc: 155, cash: 91500, cost: 87000, gePrice: 93500, tlPrice: 93500 },
+    { label: 'GT125', category: 'YAMAHA', modelId: 'B21400', cc: 125, cash: 45500, cost: 44000, gePrice: 52000, tlPrice: 51500 },
+    { label: 'GT125', category: 'YAMAHA', modelId: 'B21500', cc: 125, cash: 46100, cost: 44500, gePrice: 52000, tlPrice: 52000 },
+    { label: 'GT125', category: 'YAMAHA', modelId: 'B2H300', cc: 125, cash: 47100, cost: 45600, gePrice: 53000, tlPrice: 53500 },
+    { label: 'FINO125 ACTIVE FASHION', category: 'YAMAHA', modelId: 'BB9800', cc: 125, cash: 46000, cost: 45000, gePrice: 50900, tlPrice: 51000 },
+    { label: 'FINO รุ่นใหม่ ล้อลวด', category: 'YAMAHA', modelId: 'BB9900', cc: 125, cash: 47000, cost: 45700, gePrice: 51900, tlPrice: 51500 },
+    { label: 'FINO รุุ่่นใหม่ ล้อแม็ค', category: 'YAMAHA', modelId: 'BS9300', cc: 125, cash: 52500, cost: 50700, gePrice: 58000, tlPrice: 57500 },
+    { label: 'FREE GO', category: 'YAMAHA', modelId: 'BOP100', cc: 125, cash: 51200, cost: 49200, gePrice: 57200, tlPrice: 56800 },
+    { label: 'LEXI ABS', category: 'YAMAHA', modelId: 'B4H300', cc: 125, cash: 67900, cost: 65900, gePrice: 74000, tlPrice: 74000 },
+    { label: 'LEXI รุ่นใหม่ สีแดง', category: 'YAMAHA', modelId: 'B4H400', cc: 125, cash: 60100, cost: 58700, gePrice: 65200, tlPrice: 65500 },
+    { label: 'LEXI รุ่นใหม่ สีน้ำเงิน,ดำ', category: 'YAMAHA', modelId: 'B4H500', cc: 125, cash: 63900, cost: 61900, gePrice: 68900, tlPrice: 69200 },
+    { label: 'QBIX รุ่นใหม่', category: 'YAMAHA', modelId: 'BM9B00', cc: 125, cash: 54000, cost: 52500, gePrice: 62000, tlPrice: 62000 },
+    { label: 'QBIX S รุ่นใหม่', category: 'YAMAHA', modelId: 'BM9C00', cc: 125, cash: 56500, cost: 55000, gePrice: 65100, tlPrice: 65000 },
+    { label: 'QBIX ABS รุ่นใหม่', category: 'YAMAHA', modelId: 'BM9D00', cc: 125, cash: 60400, cost: 58800, gePrice: 69600, tlPrice: 69600 },
+    { label: 'AEROX 155 STD. รุ่นใหม่', category: 'YAMAHA', modelId: 'BF6C00', cc: 155, cash: 64500, cost: 61000, gePrice: 73000, tlPrice: 73000 },
+    { label: 'AEROX 155 R VERSION รุ่นใหม่', category: 'YAMAHA', modelId: 'BF6D00', cc: 155, cash: 67500, cost: 64000, gePrice: 76000, tlPrice: 76000 },
+    { label: 'AEROX 155 ABS รุ่นใหม่', category: 'YAMAHA', modelId: 'BF6E00', cc: 155, cash: 74500, cost: 70500, gePrice: 84000, tlPrice: 84000 },
+    { label: 'AEROX 155 ABS รุ่นใหม่ สีดำ MOTO GP', category: 'YAMAHA', modelId: 'BF6J00', cc: 155, cash: 68900, cost: 65500, gePrice: 77000, tlPrice: 77500 },
+    { label: 'FINN ลวด', category: 'YAMAHA', modelId: 'B6F900', cc: 115, cash: 43000, cost: 40900, gePrice: 50900, tlPrice: 49700 },
+    { label: 'FINN รุ่นใหม่ แม็ค', category: 'YAMAHA', modelId: 'B6FB00', cc: 115, cash: 45000, cost: 42800, gePrice: 53500, tlPrice: 51300 },
+    { label: 'FINN รุ่นใหม่ แม็ค', category: 'YAMAHA', modelId: 'B6FC00', cc: 115, cash: 45500, cost: 43300, gePrice: 53800, tlPrice: 53500 },
+    { label: 'EXCITER 150 รุ่นใหม่', category: 'YAMAHA', modelId: 'B15800', cc: 150, cash: 63000, cost: 61500, gePrice: 64700, tlPrice: 64600 },
+    { label: 'EXCITER 150 รุ่นใหม่', category: 'YAMAHA', modelId: 'B15A00', cc: 150, cash: 63000, cost: 61500, gePrice: 64700, tlPrice: 64600 },
+    ";
 ?>
 <!doctype html>
 <html lang="en">
@@ -35,7 +79,7 @@
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
         <a class="navbar-brand font-weight-light" href="#">
             <i class="material-icons">motorcycle</i>
-            Testing System
+            โชคดี รามคำแหง 53
             <i class="material-icons">sports_motorsports</i>
         </a>
     </nav>
@@ -78,7 +122,7 @@
         </div>
         <div class="row align-items-center">
             <div class="col-1 font-weight-lighter">โค้ด</div>
-            <div class="col-3 bd-callout" id="model-id"></div>
+            <div class="col-3 bd-callout font-weight-bolder" id="model-id"></div>
             <div class="col-8 text-right">
                 <span class="badge badge-pill badge-light badge-cc" id="cc100">100 CC</span>
                 <span class="badge badge-pill badge-light badge-cc" id="cc150">150 CC</span>
@@ -376,6 +420,7 @@
                 $("#cash-price").text(numberWithCommas(object.cash));
                 $("#cash-price2").text($("#cash-price").text());
                 $("#ge-price").text(numberWithCommas(object.gePrice));
+                $("#tl-price").text(numberWithCommas(object.tlPrice));
                 $("#cost-price").text((object.cash - object.cost) / 1000);
                 $(".badge-cc").removeClass("badge-light");
                 $(".badge-cc").removeClass("badge-success");
