@@ -88,7 +88,6 @@
         </a>
     </nav>
     <br>
-    <form action="bill_form.php" method="post">
     <div class="container font-weight-lighter">
         <div class="row">
             <div class="input-group align-items-center">
@@ -330,12 +329,14 @@
                 </div>
             </div>
             <br>
-            <input type="text" name="fname" value="จิราพรรณ์" style="display:none">
-            <input type="text" name="lname" value="พุ่มเพ็ชร" style="display:none">
-            <input type="submit" value="ออกบิล">                
+            <br>
+            <form action="bill_form.php" method="post">
+                <input type="text" name="fname" value="จิราพรรณ์" style="display:none">
+                <input type="text" name="lname" value="พุ่มเพ็ชร" style="display:none">
+                <button type="submit" class="btn btn-dark btn-lg">ออกบิล</button>
+            </form>
         </div>
     </div>
-    </form>
     <?php if ($isAdmin) { ?>
         <nav class="navbar fixed-bottom navbar-light bg-light">
             <p class="h4 text-success font-weight-lighter" id="scoring-margin"></p>
