@@ -88,10 +88,10 @@
         </a>
     </nav>
     <br>
-    <!--form class="opening"-->
-    <div class="container">
+    <form action="bill_form.php" method="post">
+    <div class="container font-weight-lighter">
         <div class="row align-items-center">
-            <div class="col-1 font-weight-lighter">รุ่น</div>
+            <div class="col-1">รุ่น</div>
             <div class="col-9 input-group input-group-sm">
                 <input class="form-control" id="search" placeholder="ค้นหา">
             </div>
@@ -106,7 +106,7 @@
         </div>
         <br>
         <div class="row align-items-center" style="display:none" id="color-section">
-            <div class="col-1 font-weight-lighter">สี</div>
+            <div class="col-1">สี</div>
             <div class="col">
                 <div style="display:none" class="btn-group btn-group-toggle model-group" id="model1234" data-toggle="buttons">
                     <label class="btn btn-secondary model model1 active">
@@ -125,7 +125,7 @@
             </div>
         </div>
         <div class="row align-items-center">
-            <div class="col-1 font-weight-lighter">โค้ด</div>
+            <div class="col-1">โค้ด</div>
             <div class="col-3 bd-callout font-weight-bolder" id="model-id"></div>
             <div class="col-8 text-right">
                 <span class="badge badge-pill badge-light badge-cc" id="cc100">100 CC</span>
@@ -137,20 +137,20 @@
         </div>
         <br>
         <div class="row align-items-center">
-            <div class="col-1 font-weight-lighter">ราคา</div>
+            <div class="col-1">ราคา</div>
             <div class="col-2">
                 <button type="button" class="btn btn-success btn-sm btn-block">
                     <span id="cash-price">&nbsp;</span>
                 </button>
             </div>
             <div class="col-1 text-center"><span class="badge badge-pill badge-dark">+</span></div>
-            <div class="col-2 text-center font-weight-lighter">ทะเบียน&พรบ.</div>
+            <div class="col-2 text-center">ทะเบียน&พรบ.</div>
             <div class="col-2">
                 <button type="button" class="btn btn-success btn-sm btn-block">
                     <span id="cc-price">1,000</span>
                 </button>
             </div>
-            <div class="col-2 text-center font-weight-lighter">ประกันรถหาย</div>
+            <div class="col-2 text-center">ประกันรถหาย</div>
             <div class="col-2">
                 <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                     <label class="btn btn-outline-success btn-sm active">
@@ -168,7 +168,7 @@
         </div>
         <br>
         <div class="row align-items-center">
-            <div class="col-1 font-weight-lighter">ไฟแนนซ์</div>
+            <div class="col-1">ไฟแนนซ์</div>
             <div class="col-11">
                 <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                     <label class="btn btn-outline-success btn-sm">
@@ -198,7 +198,7 @@
         <br>
         <div id="leasing-sections">
             <div class="row align-items-center">
-                <div class="col-1 font-weight-lighter">ดอกเบี้ย</div>
+                <div class="col-1">ดอกเบี้ย</div>
                 <div class="col-5" id="interest-ge-section">
                     <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                         <label class="btn btn-outline-primary btn-sm active">
@@ -258,7 +258,7 @@
             </div>
             <br>
             <div class="row align-items-center">
-                <div class="col-1 font-weight-lighter">ดาวน์</div>
+                <div class="col-1">ดาวน์</div>
                 <div class="col-11">
                     <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                         <label class="btn btn-outline-primary btn-sm active">
@@ -296,7 +296,7 @@
             </div>
             <br>
             <div class="row align-items-center">
-                <div class="col-1 font-weight-lighter">ผ่อน</div>
+                <div class="col-1">ผ่อน</div>
                 <div class="col-11">
                     <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
                         <label class="btn btn-outline-primary btn-sm active">
@@ -333,9 +333,12 @@
                 </div>
             </div>
             <br>
+            <input type="text" name="fname" value="จิราพรรณ์" style="display:none">
+            <input type="text" name="lname" value="พุ่มเพ็ชร" style="display:none">
+            <input type="submit" value="ออกบิล">                
         </div>
     </div>
-    <!--/form-->
+    </form>
     <?php if ($isAdmin) { ?>
         <nav class="navbar fixed-bottom navbar-light bg-light">
             <p class="h4 text-success font-weight-lighter" id="scoring-margin"></p>
