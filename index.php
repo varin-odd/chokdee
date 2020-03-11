@@ -90,18 +90,18 @@
     <br>
     <form action="bill_form.php" method="post">
     <div class="container font-weight-lighter">
-        <div class="row align-items-center">
-            <div class="col-1">รุ่น</div>
-            <div class="col-9 input-group input-group-sm">
-                <input class="form-control" id="search" placeholder="ค้นหา">
-            </div>
-            <div class="col-2">
-                <button type="button" class="btn btn-outline-success btn-sm" id="search-icon">
-                    <i class="material-icons">search</i>
-                </button>
-                <button type="button" class="btn btn-outline-secondary btn-sm" id="clear">
-                    <i class="material-icons">delete</i>
-                </button>
+        <div class="row">
+            <div class="input-group align-items-center">
+                <div class="col-1">รุ่น</div>
+                <div class="col-11 input-group input-group-sm input-group-prepend align-items-center">
+                    <input class="form-control" id="search" placeholder="ค้นหา">
+                    <button type="button" class="btn btn-success btn-sm" id="search-icon">
+                        &nbsp;&nbsp;<i class="material-icons">search</i>&nbsp;&nbsp;
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="clear">
+                        <i class="material-icons">delete</i>
+                    </button>
+                </div>
             </div>
         </div>
         <br>
