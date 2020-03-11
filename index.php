@@ -98,9 +98,6 @@
                     <button type="button" class="btn btn-success btn-sm" id="search-icon">
                         &nbsp;&nbsp;<i class="material-icons">search</i>&nbsp;&nbsp;
                     </button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm" id="clear">
-                        <i class="material-icons">delete</i>
-                    </button>
                 </div>
             </div>
         </div>
@@ -427,6 +424,7 @@
             $("#install5").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 36)));
         }
         var object;
+        var tmp_search_txt;
         $( function() {
             //$("input[name='leasing']").click(function(){
             $("input[type='radio']").click(function(){
@@ -477,6 +475,10 @@
                 $(".model").removeClass("active");
                 var typename = $("#search").val();
                 object = searchValueInArray(typename, data);
+                if (object == undefined) {
+                    $("#search").val(tmp_search_txt);
+                    return;
+                }
                 $("#model-id").text(object.modelId);
                 $("#cash-price").text(numberWithCommas(object.cash));
                 $("#cash-price2").text($("#cash-price").text());
@@ -531,16 +533,17 @@
                 }*/
             }
 
-            $("#search").change(function() {
+            $("#search").focus(function() {
+                tmp_search_txt = $("#search").val();
+                $("#search").val("");
+            });
+
+            $("#search").blur(function() {
                 searchClicked();
             });
 
             $("#search-icon").click(function() {
                 searchClicked();
-            });
-
-            $("#clear").click(function() {
-                $("#search").val("");
             });
         } );
     </script>
