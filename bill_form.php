@@ -39,7 +39,8 @@
 	</style>
 </head>
 <body>
-    <img class="bg" src="bill_white.jpg">
+    <div id="myDiv">
+    <img id="myImg" src="bill_white.jpg">
         <div class="txt_date">
             <?php
                 date_default_timezone_set("Asia/Bangkok");
@@ -68,6 +69,37 @@
     <div class="txt_period">36</div>
     <div class="txt_loan">4,456</div>
     <div class="txt_remark">แถมหมวก 1 ใบ แถมเสื้อ 1 ตัว</div>
+    </div>
+    <div id="copyDiv"></div>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="html2canvas.min.js"></script>
+    <script>
+        function resize() {
+            var canvas = document.getElementById('myCanvas');
+            var canvasRatio = canvas.height / canvas.width;
+            var windowRatio = window.innerHeight / window.innerWidth;
+            var width;
+            var height;
+            if (windowRatio < canvasRatio) {
+                height = window.innerHeight;
+                width = height / canvasRatio;
+            } else {
+                width = window.innerWidth;
+                height = width * canvasRatio;
+            }
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+            window.addEventListener('resize', resize, false);
+        };
+        $(function() {
+            html2canvas($("body")[0]).then(function(canvas) {
+                $("#copyDiv").append(canvas);
+                $("#myDiv").hide();
+                $("#copyDiv canvas").attr("id", "myCanvas");
+                resize();
+            });
+        });
+    </script>
 </body>
 </html>
 
