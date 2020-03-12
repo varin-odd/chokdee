@@ -28,6 +28,7 @@
         .txt_province { position: absolute; top: 410px; left: 680px; }
         .txt_mobile { position: absolute; top: 410px; left: 960px; }
         .txt_amt { position: absolute; top: 480px; left: 200px; font-size: 1.2em; }
+        .txt_amt_option { position: absolute; top: 495px; left: 360px; font-size: 0.6em; }
         .txt_amt_desc { position: absolute; top: 485px; left: 560px; }
         .txt_brand { position: absolute; top: 530px; left: 320px; font-size: 1.2em; }
         .txt_model { position: absolute; top: 535px; left: 720px; }
@@ -87,6 +88,7 @@
                 <div class="txt_social_q">เลขบัตรประชาชน</div>
             </div>
             <div class="answer">
+                <div class="txt_amt_option">+2 งวดล่วงหน้า</div>
                 <div class="txt_loan_total">81,500</div>
                 <div class="txt_interest">1.19</div>
                 <div class="txt_social">3102000596103</div>
