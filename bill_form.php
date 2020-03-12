@@ -18,6 +18,7 @@
             white-space: nowrap;
             color: #000000;
         }
+        .div_form { position: relative; }
         .txt_date { top: 240px; left: 865px; position: absolute; font-size: 1.2em; }
         .txt_name { position: absolute; top: 305px; left: 444px; }
         .txt_addr { position: absolute; top: 355px; left: 200px; }
@@ -38,42 +39,63 @@
         .txt_period { position: absolute; top: 705px; left: 740px; }
         .txt_loan { position: absolute; top: 705px; left: 1040px; }
         .txt_remark { position: absolute; top: 805px; left: 240px; }
+        .question { font-size: 0.8em; color: blue; }
+        .txt_loan_total_q { position: absolute; top: 860px; left: 40px; }
+        .txt_interest_q { position: absolute; top: 860px; left: 440px; }
+        .txt_social_q { position: absolute; top: 860px; left: 730px; }
+        .answer { color: green; }
+        .txt_loan_total { position: absolute; top: 855px; left: 240px; }
+        .txt_interest { position: absolute; top: 855px; left: 600px; }
+        .txt_social { position: absolute; top: 855px; left: 960px; }
 	</style>
 </head>
 <body>
-    <div id="myDiv">
-    <img id="myImg" src="bill_white.jpg">
-        <div class="txt_date">
-            <?php
-                date_default_timezone_set("Asia/Bangkok");
-                $month = array("ม.ค.", "ก.พ.", "มี.ค.", "เม.ษ.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.");
-                echo date("d") . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $month[date("m")-1] . 
-                "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . substr(date("Y")+543, 2);
-            ?>
+    <div id="first_form" class="div_form">
+        <img id="myImg" src="bill_white.jpg">
+            <div class="txt_date">
+                <?php
+                    date_default_timezone_set("Asia/Bangkok");
+                    $month = array("ม.ค.", "ก.พ.", "มี.ค.", "เม.ษ.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.");
+                    echo date("d") . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $month[date("m")-1] . 
+                    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . substr(date("Y")+543, 2);
+                ?>
+            </div>
+        </img>
+        <div class="txt_name"><?php echo $fname . " " . $lname; ?></div>
+        <div class="txt_addr">200 หมู่ 4 อาคารจัสมินอินเตอร์เนชั่นแนล</div>
+        <div class="txt_road">แจ้งวัฒนะ</div>
+        <div class="txt_tambon">ปากเกร็ด</div>
+        <div class="txt_ampher">ปากเกร็ด</div>
+        <div class="txt_province">นนทบุรี</div>
+        <div class="txt_mobile">0801234567</div>
+        <div class="txt_amt">ฟรีดาวน์</div>
+        <div class="txt_amt_desc">ฟรีทะเบียน ฟรีพรบ. ฟรีประกันรถหาย 1 ปี</div>
+        <div class="txt_brand">YAMAHA</div>
+        <div class="txt_model">CBF150NAJTH</div>
+        <div class="txt_color">ดำ</div>
+        <div class="txt_serial">KC32E-0017055</div>
+        <div class="txt_tank">MLHKC288XJ5017055</div>
+        <div class="txt_receiver">จิราพรรณ์</div>
+        <div class="txt_finance">อยุธยา</div>
+        <div class="txt_period">36</div>
+        <div class="txt_loan">4,456</div>
+        <div class="txt_remark">แถมหมวก 1 ใบ แถมเสื้อ 1 ตัว</div>
+        <div class="special_part">
+            <div class="question">
+                <div class="txt_loan_total_q">ยอดกู้</div>
+                <div class="txt_interest_q">ดอกเบี้ย</div>
+                <div class="txt_social_q">เลขบัตรประชาชน</div>
+            </div>
+            <div class="answer">
+                <div class="txt_loan_total">81,500</div>
+                <div class="txt_interest">1.19</div>
+                <div class="txt_social">3102000596103</div>
+            </div>
         </div>
-    </img>
-    <div class="txt_name"><?php echo $fname . " " . $lname; ?></div>
-    <div class="txt_addr">200 หมู่ 4 อาคารจัสมินอินเตอร์เนชั่นแนล</div>
-    <div class="txt_road">แจ้งวัฒนะ</div>
-    <div class="txt_tambon">ปากเกร็ด</div>
-    <div class="txt_ampher">ปากเกร็ด</div>
-    <div class="txt_province">นนทบุรี</div>
-    <div class="txt_mobile">0801234567</div>
-    <div class="txt_amt">ฟรีดาวน์</div>
-    <div class="txt_amt_desc">ฟรีทะเบียน ฟรีพรบ. ฟรีประกันรถหาย 1 ปี</div>
-    <div class="txt_brand">YAMAHA</div>
-    <div class="txt_model">CBF150NAJTH</div>
-    <div class="txt_color">ดำ</div>
-    <div class="txt_serial">KC32E-0017055</div>
-    <div class="txt_tank">MLHKC288XJ5017055</div>
-    <div class="txt_receiver">จิราพรรณ์</div>
-    <div class="txt_finance">อยุธยา</div>
-    <div class="txt_period">36</div>
-    <div class="txt_loan">4,456</div>
-    <div class="txt_remark">แถมหมวก 1 ใบ แถมเสื้อ 1 ตัว</div>
     </div>
+    <div id="second_form" class="div_form"></div>
     <div id="copyDiv"></div>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="html2canvas.min.js"></script>
     <script>
         function resize() {
@@ -94,9 +116,11 @@
             window.addEventListener('resize', resize, false);
         };
         $(function() {
+            $('#first_form').clone().appendTo('#second_form');
+            $('#first_form').find('.special_part').hide();
             html2canvas($("body")[0]).then(function(canvas) {
                 $("#copyDiv").append(canvas);
-                $("#myDiv").hide();
+                $(".div_form").hide();
                 $("#copyDiv canvas").attr("id", "myCanvas");
                 resize();
             });
