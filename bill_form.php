@@ -77,7 +77,7 @@
         <div class="txt_serial">KC32E-0017055</div>
         <div class="txt_tank">MLHKC288XJ5017055</div>
         <div class="txt_receiver">จิราพรรณ์</div>
-        <div class="txt_finance">อยุธยา</div>
+        <div class="txt_finance">อยุธยา&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K.เท่</div>
         <div class="txt_period">36</div>
         <div class="txt_loan">4,456</div>
         <div class="txt_remark">แถมหมวก 1 ใบ แถมเสื้อ 1 ตัว</div>
