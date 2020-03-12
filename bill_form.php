@@ -13,8 +13,10 @@
     <link href="https://fonts.googleapis.com/css?family=Taviraj&display=swap" rel="stylesheet">
 	<style>
         body {
-            font-family: 'Taviraj', serif; font-size: 2.4em;
-            color: #000000; background: #eeeeee;	
+            font-family: 'Taviraj', serif;
+            font-size: 2.4em;
+            white-space: nowrap;
+            color: #000000;
         }
         .txt_date { top: 240px; left: 865px; position: absolute; font-size: 1.2em; }
         .txt_name { position: absolute; top: 305px; left: 444px; }
