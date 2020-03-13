@@ -368,13 +368,34 @@
             </div>
             <br>
             <br>
-            <form action="bill_form.php" method="post">
-                <input type="text" name="fname" value="จิราพรรณ์" style="display:none">
-                <input type="text" name="lname" value="พุ่มเพ็ชร" style="display:none">
-                <button type="submit" class="btn btn-dark btn-lg">ออกบิล</button>
-            </form>
+            <div class="row align-items-center">
+                <div class="col">
+                    <form action="info.php" method="post">
+                        <input type="text" name="fname" value="จิราพรรณ์" style="display:none">
+                        <input type="text" name="lname" value="พุ่มเพ็ชร" style="display:none">
+                        <button type="submit" class="btn btn-info btn-md btn-block">ตรวจสอบ</button>
+                    </form>
+                </div>
+                <div class="col">
+                    <form action="bill_form.php" method="post">
+                        <input type="text" name="fname" value="จิราพรรณ์" style="display:none">
+                        <input type="text" name="lname" value="พุ่มเพ็ชร" style="display:none">
+                        <button type="submit" class="btn btn-outline-dark btn-md btn-block">ออกบิล</button>
+                    </form>
+                </div>
+            </div>
+            <br>
         </div>
     </div>
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2020 โชคดี รามคำแหง 53</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="/chokdee">รุ่นมอเตอร์ไซต์</a></li>
+            <li class="list-inline-item"><a href="/chokdee/info.php">ตรวจสอบสถานะผู้ซื้อ</a></li>
+            <li class="list-inline-item"><a href="/chokdee/bill_form.php">ออกบิล</a></li>
+        </ul>
+        <br>
+    </footer>
     <?php if ($isAdmin) { ?>
         <nav class="navbar fixed-bottom navbar-light bg-light">
             <p class="h4 text-success font-weight-lighter" id="scoring-margin"></p>
