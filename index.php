@@ -389,10 +389,14 @@
     </div>
     <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">&copy; 2020 โชคดี รามคำแหง 53</p>
+        <?php
+            $req_uri = $_SERVER['REQUEST_URI'];
+            $path = substr($req_uri,0,strrpos($req_uri,'/'));
+        ?>
         <ul class="list-inline">
-            <li class="list-inline-item"><a href="/chokdee">รุ่นมอเตอร์ไซต์</a></li>
-            <li class="list-inline-item"><a href="/chokdee/info.php">ตรวจสอบสถานะผู้ซื้อ</a></li>
-            <li class="list-inline-item"><a href="/chokdee/bill_form.php">ออกบิล</a></li>
+            <li class="list-inline-item"><a href="<?php echo $path; ?>">รุ่นมอเตอร์ไซต์</a></li>
+            <li class="list-inline-item"><a href="<?php echo $path; ?>/info.php">ตรวจสอบสถานะผู้ซื้อ</a></li>
+            <li class="list-inline-item"><a href="<?php echo $path; ?>/bill_form.php">ออกบิล</a></li>
         </ul>
         <br>
     </footer>
