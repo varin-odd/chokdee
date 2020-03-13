@@ -360,7 +360,7 @@
             }
             return Math.ceil(amount);
         }
-        function calculate(price, leasing, down, int, period) {
+        function calculateInst(price, leasing, down, int, period) {
             var loan = price - (price * down / 100);
             var installment = ((loan * int / 100 * period) + loan) / period;
             return ceil(leasing, installment);
@@ -385,44 +385,45 @@
             return 0;
         }
         function radioChanged() {
-            var cash_price = Number($("#cash-price").text().replace(/,/g, ''));
             var leasing = $("input[name='leasing']:checked").val().toUpperCase();
             var down = $("input[name='down']:checked").val();
+            var price = 0;
             var interest = 0;
             var margin = 0;
             var comm = commission();
             $("#interest-ge-section").hide();
             $("#interest-tl-section").hide();
             if (leasing == 'CASH') {
+                price = object.cash;
                 $("#leasing-sections").hide();
-                margin = object.cash - object.cost;
             } else if (leasing == 'GE') {
+                price = object.gePrice;
                 interest = $("input[name='ge-interest']:checked").val();
                 $("#leasing-sections").show();
                 $("#interest-ge-section").show();
-                margin = object.gePrice - object.cost;
             } else if (leasing == 'TL') {
+                price = object.tlPrice;
                 interest = $("input[name='tl-interest']:checked").val();
                 $("#leasing-sections").show();
                 $("#interest-tl-section").show();
-                margin = object.tlPrice - object.cost;
             }
+            margin = price - object.cost;
             $("#margin-cash").text((object.cash - object.cost) / 1000);
             $("#margin-ge").text((object.gePrice - object.cost) / 1000);
             $("#margin-tl").text((object.tlPrice - object.cost) / 1000);
             $("#scoring-margin").text("MG: " + numberWithCommas(margin));
             $("#scoring-comm").text("COMM: " + numberWithCommas(comm));
             $("#scoring-net").text("NET: " + numberWithCommas(margin + comm));
-            $("#down1").text("ฟรี");
-            $("#down2").text(numberWithCommas(cash_price * 0.05));
-            $("#down3").text(numberWithCommas(cash_price * 0.10));
-            $("#down4").text(numberWithCommas(cash_price * 0.15));
-            $("#down5").text(numberWithCommas(cash_price * 0.20));
-            $("#install1").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 12)));
-            $("#install2").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 18)));
-            $("#install3").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 24)));
-            $("#install4").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 30)));
-            $("#install5").text(numberWithCommas(calculate(cash_price, leasing, down, interest, 36)));
+            $("#down1").text("-");
+            $("#down2").text(numberWithCommas(price * 0.05));
+            $("#down3").text(numberWithCommas(price * 0.10));
+            $("#down4").text(numberWithCommas(price * 0.15));
+            $("#down5").text(numberWithCommas(price * 0.20));
+            $("#install1").text(numberWithCommas(calculateInst(price, leasing, down, interest, 12)));
+            $("#install2").text(numberWithCommas(calculateInst(price, leasing, down, interest, 18)));
+            $("#install3").text(numberWithCommas(calculateInst(price, leasing, down, interest, 24)));
+            $("#install4").text(numberWithCommas(calculateInst(price, leasing, down, interest, 30)));
+            $("#install5").text(numberWithCommas(calculateInst(price, leasing, down, interest, 36)));
         }
         var object;
         var tmp_search_txt;
